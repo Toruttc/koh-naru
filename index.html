@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>こーなる</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">🌈 こーなる</div>
+      <nav class="main-nav">
+        <button class="nav-btn active" onclick="showSection('home')">ホーム</button>
+        <button class="nav-btn" onclick="showSection('tools')">勉強</button>
+        <button class="nav-btn" onclick="showSection('support')">サポートツール</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ホーム -->
+  <section id="sec-home" class="section active">
+    <div class="hero">
+      <div class="hero-emoji">🌟</div>
+      <h1 class="hero-title">お子さんの「できた」を<br>一緒に増やしていこう</h1>
+      <p class="hero-sub">発達特性のある子どもの学びをサポートする、保護者のためのツールと教材を提供しています。</p>
+    </div>
+    <div class="card-grid">
+      <div class="home-card" onclick="showSection('tools')">
+        <div class="hc-icon">📚</div>
+        <div class="hc-title">勉強</div>
+        <div class="hc-desc">お子さんと一緒に使える学習クイズ</div>
+      </div>
+      <div class="home-card" onclick="showSection('support')">
+        <div class="hc-icon">🛠️</div>
+        <div class="hc-title">サポートツール</div>
+        <div class="hc-desc">Google Classroomの連絡・課題を一覧管理</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 勉強 -->
+  <section id="sec-tools" class="section">
+    <h2 class="sec-title">勉強</h2>
+
+    <div id="subject-select">
+      <p class="sec-lead">教科を選んでください</p>
+      <div class="subject-grid" id="subject-grid"></div>
+    </div>
+
+    <div id="quiz-view" style="display:none;">
+      <button class="back-btn" onclick="backToSubjects()">← 戻る</button>
+      <div class="q-progress">
+        <div class="q-bar"><div class="q-bar-fill" id="q-bar-fill"></div></div>
+        <span class="q-count" id="q-count"></span>
+      </div>
+      <div class="question-card">
+        <div class="q-text" id="q-text"></div>
+      </div>
+      <div class="choices" id="choices"></div>
+      <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div id="result-view" style="display:none;">
+      <div class="result-box">
+        <div class="result-emoji" id="result-emoji"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <div class="result-score" id="result-score"></div>
+        <button class="retry-btn" id="retry-btn">もう一度</button>
+        <button class="back-btn2" onclick="backToSubjects()">教科を選び直す</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- サポートツール -->
+  <section id="sec-support" class="section">
+    <h2 class="sec-title">サポートツール</h2>
+    <p class="sec-lead">保護者の方向けのツールを提供しています。</p>
+    <div class="tool-card" onclick="location.href='classroom-tool.html'">
+      <div class="tc-icon">📋</div>
+      <div class="tc-body">
+        <div class="tc-title">Google Classroom 確認ツール</div>
+        <div class="tc-desc">お子さんのClassroomの連絡・課題・テスト情報をスプレッドシートで一覧管理できます</div>
+      </div>
+      <div class="tc-arrow">→</div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
