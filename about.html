@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>こーなるについて | こーなる</title>
+<style>
+  :root {
+    --teal: #13ABA3;
+    --teal-dark: #0D8880;
+    --teal-light: #E6F7F6;
+    --salmon: #F4845F;
+    --salmon-light: #FEF0EB;
+    --black: #1A1A1A;
+    --gray: #6B7280;
+    --gray-light: #F7F8F9;
+    --white: #FFFFFF;
+    --border: #E5E7EB;
+    --text: #374151;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.85;
+    font-size: 15px;
+  }
+
+  /* ヘッダー */
+  header {
+    background: var(--teal);
+    padding: 16px 24px;
+  }
+  .header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .logo span { color: #FFD4C2; }
+  nav {
+    margin-left: auto;
+    display: flex;
+    gap: 20px;
+  }
+  nav a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 13px;
+  }
+  nav a:hover { color: var(--white); }
+
+  /* メインコンテナ */
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ページタイトル */
+  .page-title-block {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .page-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .page-title-block h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--black);
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+  .page-title-block .lead {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.9;
+    max-width: 540px;
+  }
+
+  /* セクション共通 */
+  .section {
+    margin-bottom: 56px;
+  }
+  .section-header {
+    margin-bottom: 20px;
+  }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--black);
+    line-height: 1.4;
+  }
+  .section p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.9;
+    margin-bottom: 14px;
+  }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* 区切り線 */
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  /* 保護者向けボックス */
+  .audience-block {
+    background: var(--gray-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 24px 28px;
+    margin: 24px 0;
+  }
+  .audience-block h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--teal-dark);
+    margin-bottom: 14px;
+  }
+  .audience-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .audience-block ul li {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.75;
+    padding-left: 18px;
+    position: relative;
+  }
+  .audience-block ul li::before {
+    content: "・";
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+  }
+
+  /* 引用ブロック */
+  blockquote {
+    border-left: 3px solid var(--salmon);
+    background: var(--salmon-light);
+    padding: 18px 24px;
+    border-radius: 0 8px 8px 0;
+    margin: 24px 0;
+    font-size: 14px;
+    color: #4B2E23;
+    line-height: 1.85;
+    font-style: normal;
+  }
+
+  /* 子ども向けセクション */
+  .kids-section {
+    background: var(--teal-light);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 24px 0;
+  }
+  .kids-section h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--teal-dark);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .kids-section p {
+    font-size: 15px;
+    color: #1A4A47;
+    line-height: 1.9;
+    margin-bottom: 12px;
+  }
+  .kids-section p:last-child { margin-bottom: 0; }
+
+  /* 大切にしていることセクション */
+  .value-block {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-top: 24px;
+  }
+  .value-block h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 16px;
+  }
+  .value-block p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.9;
+    margin-bottom: 12px;
+  }
+  .value-block p:last-child { margin-bottom: 0; }
+
+  /* フッター */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray);
+  }
+
+  /* レスポンシブ */
+  @media (max-width: 600px) {
+    header { padding: 14px 16px; }
+    main { padding: 0 16px 60px; }
+    .page-title-block { padding: 32px 0 28px; margin-bottom: 32px; }
+    .page-title-block h1 { font-size: 22px; }
+    .section h2 { font-size: 18px; }
+    .kids-section { padding: 24px 20px; }
+    .value-block { padding: 22px 20px; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">こ<span>ー</span>なる</a>
+    <nav>
+      <a href="study.html">勉強</a>
+      <a href="tools.html">サポートツール</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="page-title-block">
+    <p class="page-label">About</p>
+    <h1>こーなるとは</h1>
+    <p class="lead">
+      日常の学習や遊びの中で、親子で「何が好きか」「何が得意か」に少しずつ気づいていく。好きなことや得意なことの延長線上に、その子に合った将来のイメージが見えてくる。こーなるはそのための「探索の場」です。
+    </p>
+    <p class="lead" style="margin-top:12px;">
+      「自分の形」を知ることが、その子に合った選択肢を広げる手がかりになると思っています。
+    </p>
+  </div>
+
+  <!-- For whom -->
+  <div class="section">
+    <div class="section-header">
+      <p class="section-eyebrow">For whom</p>
+      <h2>保護者の方へ</h2>
+    </div>
+
+    <div class="audience-block">
+      <ul>
+        <li>ASD・ADHD・軽度知的障害などの診断があっても、実は一人ひとり特性は異なります。同じ診断名でも、その子に合った支援方法は人それぞれ。「うちの子に合った関わり方が、よくわからない」と感じている方</li>
+        <li>進路や就労のことを考え始めたけれど、「うちの子にはどんな選択肢があるのか」と手探りしている方</li>
+        <li>困りごとはある。でも、既存の支援にはうまく当てはまらないと感じている方</li>
+      </ul>
+    </div>
+
+    <blockquote>
+      「正直、そこまで重たい障害だとは思っていない。でも、定型発達の子と同じペースでは難しい。」<br>
+      そんなふうに感じている保護者のために、こーなるを作りました。
+    </blockquote>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2>「自分だけ、なんか違う」と感じているみなさんへ</h2>
+    </div>
+
+    <div class="kids-section">
+      <p>みんなが当たり前にわかることが、自分にはピンとこない。逆に、自分がすごく気になることを、周りは全然気にしていない。そんなことはありませんか。</p>
+      <p>それは、みなさんの脳の使い方や感じ方が、少し人と違うだけかもしれません。同じ教室にいても、実は見えているもの、聞こえているもの、感じていることは、一人ひとり違うものです。</p>
+      <p>それは、みなさんにしかない感じ方、考え方の形です。その形がわかると、どんな勉強のしかたが合うか、何が得意かが、少しずつ見えてきます。</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- なぜ作ったか -->
+  <div class="section">
+    <div class="section-header">
+      <p class="section-eyebrow">Background</p>
+      <h2>運営者について</h2>
+    </div>
+    <p>このサイトは、発達特性のある子どもを持つ保護者が作っています。</p>
+    <p>息子はASDと境界知能の診断を受けています。診断が出た当初は、「ASD」という診断名がついた時点で、なんとなくわかった気になっていました。でも関連する本をいろいろ読むうちに、同じ診断名でも特性は一人ひとり違うということに気づきました。WISCという認知特性をみる検査を受けさせてみたら、「目で見て理解することが得意」「ルールや仕組みを見つけて考えることが比較的得意」といった、息子固有の特性の詳細が見えてきました。</p>
+    <p>そこから、その特性を踏まえた関わり方を試行錯誤する日々が始まりました。正直なところ、今もまだ手探りです。</p>
+    <p>私は医学的な専門家ではありませんが、同じ立場の保護者として実際に試しながら作ったコンテンツが、同じように悩んでいる方の役に立てればと思っています。</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- こーなるが大切にしていること -->
+  <div class="section">
+    <div class="section-header">
+      <p class="section-eyebrow">Values</p>
+      <h2>こーなるが大切にしていること</h2>
+    </div>
+
+    <div class="value-block">
+      <h3>その子の「形」のまま</h3>
+      <p>「あなたのお子さんはこの仕事が向いている」と断言することはしません。普段の学びや遊びの中で、好きなこと・得意なこと・特性を発見するお手伝いをしたいと思っています。</p>
+      <p>発達特性は、その子にしかない「形」です。</p>
+      <p>その形がわかるほど、保護者はその子に合った関わり方が見えてくると思います。お子さん自身も、自分にとっての「合う・合わない」を少しずつ判断できるようになる。</p>
+      <p>その形を知ることが、その子らしい選択肢を広げる手がかりになると思っています。</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  © こーなる — Kotonaru Inc.
+</footer>
+
+</body>
+</html>
