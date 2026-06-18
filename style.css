@@ -42,6 +42,8 @@ body {
   cursor: pointer;
   font-weight: 500;
   transition: background 0.15s, color 0.15s;
+  text-decoration: none;
+  display: inline-block;
 }
 .nav-btn:hover { background: #E6F7F6; color: #13ABA3; }
 .nav-btn.active { background: #E6F7F6; color: #13ABA3; font-weight: 700; }
