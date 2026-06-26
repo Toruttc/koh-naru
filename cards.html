@@ -4,400 +4,115 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="考査カード">
-  <title>考査対策カード｜理科</title>
+  <title>考査対策カード</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, 'Helvetica Neue', sans-serif; background: #f5f5f5; color: #333; min-height: 100vh; }
 
-    body {
-      font-family: -apple-system, 'Helvetica Neue', sans-serif;
-      background: #f5f5f5;
-      color: #333;
-      min-height: 100vh;
-    }
+    /* TOP */
+    #screen-top { display: flex; flex-direction: column; min-height: 100vh; padding: 24px 20px 40px; }
+    .top-header { text-align: center; margin-bottom: 24px; }
+    .top-header h1 { font-size: 22px; font-weight: 700; color: #13ABA3; margin-bottom: 4px; }
+    .top-header p { font-size: 14px; color: #888; }
 
-    /* ===== TOP SCREEN ===== */
-    #screen-top {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      padding: 24px 20px 40px;
-    }
-
-    .top-header {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .top-header h1 {
-      font-size: 22px;
-      font-weight: 700;
-      color: #13ABA3;
-      margin-bottom: 4px;
-    }
-
-    .top-header p {
-      font-size: 14px;
-      color: #888;
-    }
-
-    .subject-card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-
-    .subject-card h2 {
-      font-size: 20px;
-      font-weight: 700;
-      color: #13ABA3;
-      margin-bottom: 8px;
-    }
-
-    .subject-stats {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 16px;
-      font-size: 13px;
-      color: #666;
-    }
-
-    .stat-badge {
-      background: #f0f0f0;
-      border-radius: 20px;
-      padding: 3px 10px;
-    }
-
-    .stat-badge.review { background: #FFF3E0; color: #E65100; }
+    .subject-card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .subject-card h2 { font-size: 20px; font-weight: 700; color: #13ABA3; margin-bottom: 10px; }
+    .subject-stats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; font-size: 13px; }
+    .stat-badge { background: #f0f0f0; border-radius: 20px; padding: 3px 10px; }
     .stat-badge.known { background: #E8F5E9; color: #2E7D32; }
+    .stat-badge.review { background: #FFF3E0; color: #E65100; }
     .stat-badge.important { background: #FCE4EC; color: #C62828; }
+    .progress-bar { height: 8px; background: #e0e0e0; border-radius: 4px; margin-bottom: 14px; overflow: hidden; }
+    .progress-fill { height: 100%; background: #13ABA3; border-radius: 4px; }
+    .mode-buttons { display: flex; flex-direction: column; gap: 10px; }
 
-    .progress-bar {
-      height: 8px;
-      background: #e0e0e0;
-      border-radius: 4px;
-      margin-bottom: 16px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: #13ABA3;
-      border-radius: 4px;
-      transition: width 0.3s;
-    }
-
-    .mode-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .btn {
-      border: none;
-      border-radius: 12px;
-      padding: 14px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-      transition: opacity 0.15s;
-    }
-
+    .btn { border: none; border-radius: 12px; padding: 14px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; transition: opacity 0.15s; }
     .btn:active { opacity: 0.75; }
+    .btn-primary { background: #13ABA3; color: white; }
+    .btn-secondary { background: white; color: #13ABA3; border: 2px solid #13ABA3; }
+    .btn-orange { background: #F4845F; color: white; }
+    .btn-sm { font-size: 14px; padding: 10px; }
+    .btn:disabled { opacity: 0.35; cursor: default; }
 
-    .btn-primary {
-      background: #13ABA3;
-      color: white;
-    }
-
-    .btn-secondary {
-      background: white;
-      color: #13ABA3;
-      border: 2px solid #13ABA3;
-    }
-
-    .btn-orange {
-      background: #F4845F;
-      color: white;
-    }
-
-    .btn-sm {
-      font-size: 14px;
-      padding: 10px;
-    }
-
-    .btn:disabled {
-      opacity: 0.4;
-      cursor: default;
-    }
-
-    /* ===== CARD SCREEN ===== */
-    #screen-card {
-      display: none;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .card-header {
-      background: white;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .btn-back {
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: #13ABA3;
-      padding: 0 4px;
-    }
-
-    .header-info {
-      flex: 1;
-    }
-
-    .header-subject {
-      font-size: 12px;
-      color: #888;
-    }
-
-    .header-progress {
-      font-size: 16px;
-      font-weight: 700;
-      color: #333;
-    }
-
-    .header-mode {
-      font-size: 12px;
-      color: white;
-      background: #F4845F;
-      border-radius: 20px;
-      padding: 3px 10px;
-    }
-
-    .card-body {
-      flex: 1;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .card-image-wrap {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 280px;
-    }
-
-    .card-image-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .card-title-bar {
-      background: white;
-      border-radius: 12px;
-      padding: 12px 16px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-
-    .card-num {
-      font-size: 12px;
-      color: #aaa;
-    }
-
-    .card-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: #333;
-    }
-
-    .state-buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
-    }
-
-    .btn-state {
-      border: none;
-      border-radius: 12px;
-      padding: 14px 8px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-
+    /* CARD */
+    #screen-card { display: none; flex-direction: column; min-height: 100vh; }
+    .card-header { background: white; padding: 14px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 10; }
+    .btn-back { background: none; border: none; font-size: 24px; cursor: pointer; color: #13ABA3; padding: 0 4px; }
+    .header-info { flex: 1; }
+    .header-subject { font-size: 12px; color: #888; }
+    .header-progress { font-size: 16px; font-weight: 700; }
+    .header-mode { font-size: 12px; color: white; background: #F4845F; border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
+    .card-body { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .card-image-wrap { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; min-height: 260px; }
+    .card-image-wrap img { width: 100%; height: auto; display: block; }
+    .card-title-bar { background: white; border-radius: 12px; padding: 12px 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .card-num { font-size: 12px; color: #aaa; }
+    .card-title { font-size: 18px; font-weight: 700; }
+    .state-buttons { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .btn-state { border: none; border-radius: 12px; padding: 14px 8px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; transition: transform 0.1s; }
     .btn-state:active { transform: scale(0.96); }
-
     .btn-known { background: #E8F5E9; color: #2E7D32; }
     .btn-review { background: #FFF3E0; color: #E65100; }
     .btn-important { background: #FCE4EC; color: #C62828; }
-
     .btn-state.active-known { background: #2E7D32; color: white; }
     .btn-state.active-review { background: #E65100; color: white; }
     .btn-state.active-important { background: #C62828; color: white; }
-
     .btn-icon { font-size: 20px; }
-
-    .nav-buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      padding-bottom: 20px;
-    }
-
-    .today-progress {
-      background: white;
-      border-radius: 12px;
-      padding: 10px 16px;
-      text-align: center;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-
+    .nav-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-bottom: 20px; }
+    .today-progress { background: white; border-radius: 12px; padding: 10px 16px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
     .today-label { font-size: 12px; color: #888; }
     .today-count { font-size: 22px; font-weight: 700; color: #13ABA3; }
-    .today-bar {
-      height: 6px;
-      background: #e0e0e0;
-      border-radius: 3px;
-      margin-top: 6px;
-      overflow: hidden;
-    }
-    .today-fill {
-      height: 100%;
-      background: #13ABA3;
-      border-radius: 3px;
-      transition: width 0.3s;
-    }
+    .today-bar { height: 6px; background: #e0e0e0; border-radius: 3px; margin-top: 6px; overflow: hidden; }
+    .today-fill { height: 100%; background: #13ABA3; border-radius: 3px; transition: width 0.3s; }
 
-    /* ===== COMPLETE SCREEN ===== */
-    #screen-complete {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 40px 24px;
-      text-align: center;
-      gap: 20px;
-    }
-
+    /* COMPLETE */
+    #screen-complete { display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 40px 24px; text-align: center; gap: 20px; }
     .complete-icon { font-size: 64px; }
     .complete-title { font-size: 26px; font-weight: 700; color: #13ABA3; }
     .complete-sub { font-size: 16px; color: #666; }
-
-    .complete-stats {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      width: 100%;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-
-    .complete-stat-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 0;
-      border-bottom: 1px solid #f0f0f0;
-      font-size: 15px;
-    }
-
+    .complete-stats { background: white; border-radius: 16px; padding: 20px; width: 100%; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .complete-stat-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 15px; }
     .complete-stat-row:last-child { border-bottom: none; }
   </style>
 </head>
 <body>
 
-<!-- TOP SCREEN -->
+<!-- TOP -->
 <div id="screen-top">
   <div class="top-header">
     <h1>📚 考査対策カード</h1>
     <p>1枚ずつ、じっくり覚えよう</p>
   </div>
-
-  <div class="subject-card" id="subject-card-science">
-    <h2>🔬 理科</h2>
-    <div class="subject-stats" id="stats-science">
-      <span class="stat-badge">全 <span id="total-count">0</span> 枚</span>
-      <span class="stat-badge known">覚えた <span id="known-count">0</span></span>
-      <span class="stat-badge review">もう一回 <span id="review-count">0</span></span>
-      <span class="stat-badge important">重要 <span id="important-count">0</span></span>
-    </div>
-    <div class="progress-bar">
-      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
-    </div>
-    <div class="mode-buttons">
-      <button class="btn btn-primary" onclick="startMode('continue')">▶ 続きから</button>
-      <button class="btn btn-secondary" onclick="startMode('today10')" id="btn-today">今日の10枚</button>
-      <button class="btn btn-orange btn-sm" onclick="startMode('review')" id="btn-review-mode">もう一回だけ復習</button>
-      <button class="btn btn-secondary btn-sm" onclick="startMode('important')" id="btn-important-mode">⭐ 重要だけ見る</button>
-      <button class="btn btn-secondary btn-sm" onclick="startMode('all')">最初から全部</button>
-    </div>
-  </div>
+  <div id="subject-list"></div>
 </div>
 
-<!-- CARD SCREEN -->
+<!-- CARD -->
 <div id="screen-card">
   <div class="card-header">
     <button class="btn-back" onclick="goTop()">←</button>
     <div class="header-info">
-      <div class="header-subject">🔬 理科</div>
-      <div class="header-progress" id="header-progress">1 / 120</div>
+      <div class="header-subject" id="header-subject"></div>
+      <div class="header-progress" id="header-progress">1 / 0</div>
     </div>
     <div class="header-mode" id="header-mode">全部</div>
   </div>
-
   <div class="card-body">
     <div class="today-progress" id="today-progress-bar" style="display:none">
       <div class="today-label">今日の進み具合</div>
       <div class="today-count"><span id="today-done">0</span> / <span id="today-total">10</span> 枚</div>
-      <div class="today-bar">
-        <div class="today-fill" id="today-fill" style="width:0%"></div>
-      </div>
+      <div class="today-bar"><div class="today-fill" id="today-fill" style="width:0%"></div></div>
     </div>
-
-    <div class="card-image-wrap">
-      <img id="card-img" src="" alt="カード画像">
-    </div>
-
+    <div class="card-image-wrap"><img id="card-img" src="" alt="カード画像"></div>
     <div class="card-title-bar">
-      <div class="card-num" id="card-num">001</div>
-      <div class="card-title" id="card-title">タイトル</div>
+      <div class="card-num" id="card-num"></div>
+      <div class="card-title" id="card-title"></div>
     </div>
-
     <div class="state-buttons">
-      <button class="btn-state btn-known" id="btn-known" onclick="setState('known')">
-        <span class="btn-icon">⭕</span>覚えた
-      </button>
-      <button class="btn-state btn-review" id="btn-review" onclick="setState('review')">
-        <span class="btn-icon">🔁</span>もう一回
-      </button>
-      <button class="btn-state btn-important" id="btn-important" onclick="setState('important')">
-        <span class="btn-icon">⭐</span>重要
-      </button>
+      <button class="btn-state btn-known" id="btn-known" onclick="setState('known')"><span class="btn-icon">⭕</span>覚えた</button>
+      <button class="btn-state btn-review" id="btn-review" onclick="setState('review')"><span class="btn-icon">🔁</span>もう一回</button>
+      <button class="btn-state btn-important" id="btn-important" onclick="setState('important')"><span class="btn-icon">⭐</span>重要</button>
     </div>
-
     <div class="nav-buttons">
       <button class="btn btn-secondary" onclick="prevCard()">◀ 前へ</button>
       <button class="btn btn-primary" onclick="nextCard()">次へ ▶</button>
@@ -405,107 +120,120 @@
   </div>
 </div>
 
-<!-- COMPLETE SCREEN -->
+<!-- COMPLETE -->
 <div id="screen-complete">
   <div class="complete-icon">🎉</div>
   <div class="complete-title">おつかれさま！</div>
-  <div class="complete-sub" id="complete-sub">今日のカードが終わったよ</div>
+  <div class="complete-sub">今日のカードが終わったよ</div>
   <div class="complete-stats">
-    <div class="complete-stat-row">
-      <span>⭕ 覚えた</span><span id="c-known">0 枚</span>
-    </div>
-    <div class="complete-stat-row">
-      <span>🔁 もう一回</span><span id="c-review">0 枚</span>
-    </div>
-    <div class="complete-stat-row">
-      <span>⭐ 重要</span><span id="c-important">0 枚</span>
-    </div>
+    <div class="complete-stat-row"><span>⭕ 覚えた</span><span id="c-known">0 枚</span></div>
+    <div class="complete-stat-row"><span>🔁 もう一回</span><span id="c-review">0 枚</span></div>
+    <div class="complete-stat-row"><span>⭐ 重要</span><span id="c-important">0 枚</span></div>
   </div>
   <button class="btn btn-primary" onclick="goTop()">トップに戻る</button>
-  <button class="btn btn-orange" onclick="startMode('review')" id="btn-complete-review">もう一回だけ復習する</button>
+  <button class="btn btn-orange" id="btn-complete-review" onclick="startMode('review')">もう一回だけ復習する</button>
 </div>
 
 <script>
-// ===== DATA =====
-let CARDS = [];
-const STORAGE_KEY = 'kohnaru_science';
+const SUBJECTS = [
+  { key: 'science', label: '理科', emoji: '🔬', json: 'cards_science.json' },
+  { key: 'pe',      label: '保健体育', emoji: '🏃', json: 'cards_pe.json' }
+];
 
-function loadData() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return { lastIndex: 0, known: [], review: [], important: [] };
-  try { return JSON.parse(raw); } catch { return { lastIndex: 0, known: [], review: [], important: [] }; }
-}
-
-function saveData(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
-// ===== STATE =====
+let allCards = {};      // key -> cards[]
+let currentSubject = null;
 let currentQueue = [];
 let currentIndex = 0;
 let currentMode = 'continue';
-let todayTarget = 10;
-let todayStartIndex = 0;
-let data = {};
 
-// ===== INIT =====
+function storageKey(subjectKey) { return 'kohnaru_' + subjectKey; }
+
+function loadData(subjectKey) {
+  try { return JSON.parse(localStorage.getItem(storageKey(subjectKey))) || base(); } catch { return base(); }
+}
+function base() { return { lastIndex: 0, known: [], review: [], important: [] }; }
+function saveData(subjectKey, data) { localStorage.setItem(storageKey(subjectKey), JSON.stringify(data)); }
+
 async function init() {
-  try {
-    const res = await fetch('cards_science.json');
-    const json = await res.json();
-    CARDS = json.cards;
-  } catch (e) {
-    // フォールバック：JSONが読めない場合は空
-    CARDS = [];
+  for (const s of SUBJECTS) {
+    try {
+      const res = await fetch(s.json);
+      const json = await res.json();
+      allCards[s.key] = json.cards;
+    } catch { allCards[s.key] = []; }
   }
-  data = loadData();
-  updateTopScreen();
+  renderTop();
 }
 
-function updateTopScreen() {
-  document.getElementById('total-count').textContent = CARDS.length;
-  document.getElementById('known-count').textContent = data.known.length;
-  document.getElementById('review-count').textContent = data.review.length;
-  document.getElementById('important-count').textContent = data.important.length;
+function renderTop() {
+  const el = document.getElementById('subject-list');
+  el.innerHTML = '';
+  for (const s of SUBJECTS) {
+    const cards = allCards[s.key] || [];
+    const data = loadData(s.key);
+    const total = cards.length;
+    const pct = total > 0 ? Math.round(data.known.length / total * 100) : 0;
+    const hasReview = data.review.length > 0;
+    const hasImportant = data.important.length > 0;
 
-  const pct = CARDS.length > 0 ? Math.round(data.known.length / CARDS.length * 100) : 0;
-  document.getElementById('progress-fill').style.width = pct + '%';
-
-  document.getElementById('btn-review-mode').disabled = data.review.length === 0;
-  document.getElementById('btn-important-mode').disabled = data.important.length === 0;
+    el.innerHTML += `
+      <div class="subject-card">
+        <h2>${s.emoji} ${s.label}</h2>
+        <div class="subject-stats">
+          <span class="stat-badge">全 ${total} 枚</span>
+          <span class="stat-badge known">覚えた ${data.known.length}</span>
+          <span class="stat-badge review">もう一回 ${data.review.length}</span>
+          <span class="stat-badge important">重要 ${data.important.length}</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+        <div class="mode-buttons">
+          <button class="btn btn-primary" onclick="startSubject('${s.key}','continue')">▶ 続きから</button>
+          <button class="btn btn-secondary" onclick="startSubject('${s.key}','today10')">今日の10枚</button>
+          <button class="btn btn-orange btn-sm" onclick="startSubject('${s.key}','review')" ${hasReview?'':'disabled'}>🔁 もう一回だけ復習</button>
+          <button class="btn btn-secondary btn-sm" onclick="startSubject('${s.key}','important')" ${hasImportant?'':'disabled'}>⭐ 重要だけ見る</button>
+          <button class="btn btn-secondary btn-sm" onclick="startSubject('${s.key}','all')">最初から全部</button>
+        </div>
+      </div>`;
+  }
 }
 
-// ===== MODES =====
+function startSubject(subjectKey, mode) {
+  currentSubject = subjectKey;
+  startMode(mode);
+}
+
 function startMode(mode) {
   currentMode = mode;
-  data = loadData();
+  const cards = allCards[currentSubject] || [];
+  const data = loadData(currentSubject);
+  const s = SUBJECTS.find(x => x.key === currentSubject);
+
+  document.getElementById('header-subject').textContent = s.emoji + ' ' + s.label;
 
   if (mode === 'continue') {
-    currentQueue = CARDS.slice(data.lastIndex);
-    if (currentQueue.length === 0) currentQueue = CARDS; // 最後まで見たらリセット
+    currentQueue = cards.slice(data.lastIndex);
+    if (currentQueue.length === 0) { currentQueue = [...cards]; data.lastIndex = 0; saveData(currentSubject, data); }
     document.getElementById('header-mode').textContent = '続きから';
     document.getElementById('today-progress-bar').style.display = 'none';
   } else if (mode === 'today10') {
-    todayTarget = 10;
-    todayStartIndex = data.lastIndex;
-    currentQueue = CARDS.slice(data.lastIndex, data.lastIndex + todayTarget);
-    if (currentQueue.length === 0) { currentQueue = CARDS.slice(0, todayTarget); data.lastIndex = 0; }
+    currentQueue = cards.slice(data.lastIndex, data.lastIndex + 10);
+    if (currentQueue.length === 0) { currentQueue = cards.slice(0, 10); data.lastIndex = 0; saveData(currentSubject, data); }
     document.getElementById('header-mode').textContent = '今日の10枚';
     document.getElementById('today-progress-bar').style.display = 'block';
     document.getElementById('today-total').textContent = currentQueue.length;
   } else if (mode === 'review') {
-    currentQueue = CARDS.filter(c => data.review.includes(c.id));
+    currentQueue = cards.filter(c => data.review.includes(c.id));
     if (currentQueue.length === 0) { alert('「もう一回」のカードがありません'); return; }
     document.getElementById('header-mode').textContent = 'もう一回';
     document.getElementById('today-progress-bar').style.display = 'none';
   } else if (mode === 'important') {
-    currentQueue = CARDS.filter(c => data.important.includes(c.id));
+    currentQueue = cards.filter(c => data.important.includes(c.id));
     if (currentQueue.length === 0) { alert('「重要」のカードがありません'); return; }
     document.getElementById('header-mode').textContent = '重要';
     document.getElementById('today-progress-bar').style.display = 'none';
   } else if (mode === 'all') {
-    currentQueue = [...CARDS];
-    data.lastIndex = 0;
+    currentQueue = [...cards];
+    data.lastIndex = 0; saveData(currentSubject, data);
     document.getElementById('header-mode').textContent = '全部';
     document.getElementById('today-progress-bar').style.display = 'none';
   }
@@ -515,85 +243,47 @@ function startMode(mode) {
   showScreen('card');
 }
 
-// ===== CARD DISPLAY =====
 function showCard() {
-  if (currentIndex >= currentQueue.length) {
-    showComplete();
-    return;
-  }
-
+  if (currentIndex >= currentQueue.length) { showComplete(); return; }
   const card = currentQueue[currentIndex];
-  data = loadData();
+  const data = loadData(currentSubject);
 
   document.getElementById('card-img').src = card.image;
   document.getElementById('card-num').textContent = card.id;
   document.getElementById('card-title').textContent = card.title;
-  document.getElementById('header-progress').textContent =
-    (currentIndex + 1) + ' / ' + currentQueue.length;
+  document.getElementById('header-progress').textContent = (currentIndex + 1) + ' / ' + currentQueue.length;
 
-  // 全体進捗のlastIndex更新（continueモードのみ）
   if (currentMode === 'continue' || currentMode === 'all') {
-    const globalIdx = CARDS.findIndex(c => c.id === card.id);
-    if (globalIdx >= 0) data.lastIndex = globalIdx;
-    saveData(data);
+    const globalIdx = (allCards[currentSubject] || []).findIndex(c => c.id === card.id);
+    if (globalIdx >= 0) { data.lastIndex = globalIdx; saveData(currentSubject, data); }
   }
-
-  // 今日の進捗
   if (currentMode === 'today10') {
     document.getElementById('today-done').textContent = currentIndex;
-    const pct = currentQueue.length > 0 ? currentIndex / currentQueue.length * 100 : 0;
-    document.getElementById('today-fill').style.width = pct + '%';
+    document.getElementById('today-fill').style.width = (currentQueue.length > 0 ? currentIndex / currentQueue.length * 100 : 0) + '%';
   }
-
-  // ボタン状態
-  updateStateButtons(card.id);
+  updateStateButtons(card.id, data);
 }
 
-function updateStateButtons(id) {
-  document.getElementById('btn-known').className =
-    'btn-state btn-known' + (data.known.includes(id) ? ' active-known' : '');
-  document.getElementById('btn-review').className =
-    'btn-state btn-review' + (data.review.includes(id) ? ' active-review' : '');
-  document.getElementById('btn-important').className =
-    'btn-state btn-important' + (data.important.includes(id) ? ' active-important' : '');
+function updateStateButtons(id, data) {
+  document.getElementById('btn-known').className = 'btn-state btn-known' + (data.known.includes(id) ? ' active-known' : '');
+  document.getElementById('btn-review').className = 'btn-state btn-review' + (data.review.includes(id) ? ' active-review' : '');
+  document.getElementById('btn-important').className = 'btn-state btn-important' + (data.important.includes(id) ? ' active-important' : '');
 }
 
 function setState(type) {
   const card = currentQueue[currentIndex];
-  data = loadData();
-
-  const lists = { known: data.known, review: data.review, important: data.important };
-
-  if (lists[type].includes(card.id)) {
-    // トグル：外す
-    lists[type] = lists[type].filter(id => id !== card.id);
-  } else {
-    // 追加（他のリストからは外さない — 複数状態OK）
-    lists[type].push(card.id);
-  }
-
-  data.known = lists.known;
-  data.review = lists.review;
-  data.important = lists.important;
-  saveData(data);
-  updateStateButtons(card.id);
+  const data = loadData(currentSubject);
+  if (data[type].includes(card.id)) { data[type] = data[type].filter(id => id !== card.id); }
+  else { data[type].push(card.id); }
+  saveData(currentSubject, data);
+  updateStateButtons(card.id, data);
 }
 
-function nextCard() {
-  currentIndex++;
-  showCard();
-}
+function nextCard() { currentIndex++; showCard(); }
+function prevCard() { if (currentIndex > 0) { currentIndex--; showCard(); } }
 
-function prevCard() {
-  if (currentIndex > 0) {
-    currentIndex--;
-    showCard();
-  }
-}
-
-// ===== COMPLETE =====
 function showComplete() {
-  data = loadData();
+  const data = loadData(currentSubject);
   document.getElementById('c-known').textContent = data.known.length + ' 枚';
   document.getElementById('c-review').textContent = data.review.length + ' 枚';
   document.getElementById('c-important').textContent = data.important.length + ' 枚';
@@ -601,27 +291,17 @@ function showComplete() {
   showScreen('complete');
 }
 
-// ===== SCREEN SWITCH =====
 function showScreen(name) {
   document.getElementById('screen-top').style.display = 'none';
   document.getElementById('screen-card').style.display = 'none';
   document.getElementById('screen-complete').style.display = 'none';
-
-  if (name === 'top') {
-    document.getElementById('screen-top').style.display = 'flex';
-  } else if (name === 'card') {
-    document.getElementById('screen-card').style.display = 'flex';
-  } else if (name === 'complete') {
-    document.getElementById('screen-complete').style.display = 'flex';
-  }
+  if (name === 'top') document.getElementById('screen-top').style.display = 'flex';
+  else if (name === 'card') document.getElementById('screen-card').style.display = 'flex';
+  else if (name === 'complete') document.getElementById('screen-complete').style.display = 'flex';
 }
 
-function goTop() {
-  updateTopScreen();
-  showScreen('top');
-}
+function goTop() { renderTop(); showScreen('top'); }
 
-// ===== START =====
 init();
 </script>
 </body>
