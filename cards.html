@@ -303,6 +303,13 @@ function showScreen(name) {
 function goTop() { renderTop(); showScreen('top'); }
 
 init();
+
+// Service Worker登録
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").then(reg => {
+    reg.update(); // 毎回最新チェック
+  });
+}
 </script>
 </body>
 </html>
