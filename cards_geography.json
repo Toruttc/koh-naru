@@ -1,0 +1,320 @@
+{
+  "subject": "地理",
+  "cards": [
+    {
+      "id": "001",
+      "title": "世界の六つの州を学ぼう",
+      "image": "images/cards/地理/001_世界の六つの州を学ぼう_kohnaru.png"
+    },
+    {
+      "id": "002",
+      "title": "アジア州の国々の紹介",
+      "image": "images/cards/地理/002_アジア州の国々の紹介_kohnaru.png"
+    },
+    {
+      "id": "003",
+      "title": "ヨーロッパの小さな国々",
+      "image": "images/cards/地理/003_ヨーロッパの小さな国々_kohnaru.png"
+    },
+    {
+      "id": "004",
+      "title": "アフリカ州の国々と砂漠",
+      "image": "images/cards/地理/004_アフリカ州の国々と砂漠_kohnaru.png"
+    },
+    {
+      "id": "005",
+      "title": "オセアニア州の島々の紹介",
+      "image": "images/cards/地理/005_オセアニア州の島々の紹介_kohnaru.png"
+    },
+    {
+      "id": "006",
+      "title": "地球儀と緯線・経線の学習",
+      "image": "images/cards/地理/006_地球儀と緯線_経線の学習_kohnaru.png"
+    },
+    {
+      "id": "007",
+      "title": "赤道と本初子午線の学習カード",
+      "image": "images/cards/地理/007_赤道と本初子午線の学習カード_kohnaru.png"
+    },
+    {
+      "id": "008",
+      "title": "メルカトル図法と世界地図",
+      "image": "images/cards/地理/008_メルカトル図法と世界地図_kohnaru.png"
+    },
+    {
+      "id": "009",
+      "title": "地球儀と世界地図の違い",
+      "image": "images/cards/地理/009_地球儀と世界地図の違い_kohnaru.png"
+    },
+    {
+      "id": "010",
+      "title": "地球儀で見る最短距離",
+      "image": "images/cards/地理/010_地球儀で見る最短距離_kohnaru.png"
+    },
+    {
+      "id": "011",
+      "title": "距離と方位がわかる地図",
+      "image": "images/cards/地理/011_距離と方位がわかる地図_kohnaru.png"
+    },
+    {
+      "id": "012",
+      "title": "面積比較のための地図",
+      "image": "images/cards/地理/012_面積比較のための地図_kohnaru.png"
+    },
+    {
+      "id": "014",
+      "title": "半球の分け方とその特徴",
+      "image": "images/cards/地理/014_半球の分け方とその特徴_kohnaru.png"
+    },
+    {
+      "id": "015",
+      "title": "季節のサイクルと反対の季節",
+      "image": "images/cards/地理/015_季節のサイクルと反対の季節_kohnaru.png"
+    },
+    {
+      "id": "016",
+      "title": "日付変更線とその影響",
+      "image": "images/cards/地理/016_日付変更線とその影響_kohnaru.png"
+    },
+    {
+      "id": "017",
+      "title": "日本標準時と東経135度",
+      "image": "images/cards/地理/017_日本標準時と東経135度_kohnaru.png"
+    },
+    {
+      "id": "018",
+      "title": "世界の時差と地域別時間",
+      "image": "images/cards/地理/018_世界の時差と地域別時間_kohnaru.png"
+    },
+    {
+      "id": "019",
+      "title": "日本と世界の時差について",
+      "image": "images/cards/地理/019_日本と世界の時差について_kohnaru.png"
+    },
+    {
+      "id": "020",
+      "title": "日本の位置と世界地図",
+      "image": "images/cards/地理/020_日本の位置と世界地図_kohnaru.png"
+    },
+    {
+      "id": "021",
+      "title": "日本の位置と緯度・経度",
+      "image": "images/cards/地理/021_日本の位置と緯度_経度_kohnaru.png"
+    },
+    {
+      "id": "022",
+      "title": "日本と同じ緯度・経度の地域",
+      "image": "images/cards/地理/022_日本と同じ緯度_経度の地域_kohnaru.png"
+    },
+    {
+      "id": "023",
+      "title": "日本の緯度と経度ガイド",
+      "image": "images/cards/地理/023_日本の緯度と経度ガイド_kohnaru.png"
+    },
+    {
+      "id": "024",
+      "title": "日本をまわりの国々と海",
+      "image": "images/cards/地理/024_日本をまわりの国々と海_kohnaru.png"
+    },
+    {
+      "id": "025",
+      "title": "日本の東西南北のはし",
+      "image": "images/cards/地理/025_日本の東西南北のはし_kohnaru.png"
+    },
+    {
+      "id": "026",
+      "title": "ヨーロッパから見た日本地図",
+      "image": "images/cards/地理/026_ヨーロッパから見た日本地図_kohnaru.png"
+    },
+    {
+      "id": "028",
+      "title": "日本の領域と排他的経済水域",
+      "image": "images/cards/地理/028_日本の領域と排他的経済水域_kohnaru.png"
+    },
+    {
+      "id": "029",
+      "title": "日本のeezの広さを学ぶ",
+      "image": "images/cards/地理/029_日本のeezの広さを学ぶ_kohnaru.png"
+    },
+    {
+      "id": "030",
+      "title": "日本の領土と領域の学び",
+      "image": "images/cards/地理/030_日本の領土と領域の学び_kohnaru.png"
+    },
+    {
+      "id": "040",
+      "title": "領土問題の整理",
+      "image": "images/cards/地理/040_領土問題の整理_kohnaru.png"
+    },
+    {
+      "id": "041",
+      "title": "世界の主な食べ物カード",
+      "image": "images/cards/地理/041_世界の主な食べ物カード_kohnaru.png"
+    },
+    {
+      "id": "042",
+      "title": "気候とくらしのつながりの紹介",
+      "image": "images/cards/地理/042_気候とくらしのつながりの紹介_kohnaru.png"
+    },
+    {
+      "id": "043",
+      "title": "市場で見つける気候の手がかり",
+      "image": "images/cards/地理/043_市場で見つける気候の手がかり_kohnaru.png"
+    },
+    {
+      "id": "044",
+      "title": "世界の気候帯について学ぼう",
+      "image": "images/cards/地理/044_世界の気候帯について学ぼう_kohnaru.png"
+    },
+    {
+      "id": "045",
+      "title": "熱帯のくらしについて学ぼう",
+      "image": "images/cards/地理/045_熱帯のくらしについて学ぼう_kohnaru.png"
+    },
+    {
+      "id": "046",
+      "title": "乾燥帯のくらしと生態",
+      "image": "images/cards/地理/046_乾燥帯のくらしと生態_kohnaru.png"
+    },
+    {
+      "id": "047",
+      "title": "温帯のくらしと気候の紹介",
+      "image": "images/cards/地理/047_温帯のくらしと気候の紹介_kohnaru.png"
+    },
+    {
+      "id": "048",
+      "title": "寒帯のくらしについて学ぼう",
+      "image": "images/cards/地理/048_寒帯のくらしについて学ぼう_kohnaru.png"
+    },
+    {
+      "id": "049",
+      "title": "亜寒帯の特徴とくらし",
+      "image": "images/cards/地理/049_亜寒帯の特徴とくらし_kohnaru.png"
+    },
+    {
+      "id": "050",
+      "title": "雨温図の読み方と気候分析",
+      "image": "images/cards/地理/050_雨温図の読み方と気候分析_kohnaru.png"
+    },
+    {
+      "id": "051",
+      "title": "住まいと気候の関係",
+      "image": "images/cards/地理/051_住まいと気候の関係_kohnaru.png"
+    },
+    {
+      "id": "052",
+      "title": "雨が多い地域の住まい",
+      "image": "images/cards/地理/052_雨が多い地域の住まい_kohnaru.png"
+    },
+    {
+      "id": "053",
+      "title": "乾燥地域の家の工夫",
+      "image": "images/cards/地理/053_乾燥地域の家の工夫_kohnaru.png"
+    },
+    {
+      "id": "054",
+      "title": "寒い地域の家の工夫",
+      "image": "images/cards/地理/054_寒い地域の家の工夫_kohnaru.png"
+    },
+    {
+      "id": "055",
+      "title": "気候に合った服装の紹介",
+      "image": "images/cards/地理/055_気候に合った服装の紹介_kohnaru.png"
+    },
+    {
+      "id": "056",
+      "title": "主食と気候の関係",
+      "image": "images/cards/地理/056_主食と気候の関係_kohnaru.png"
+    },
+    {
+      "id": "057",
+      "title": "熱帯市場の楽しい風景",
+      "image": "images/cards/地理/057_熱帯市場の楽しい風景_kohnaru.png"
+    },
+    {
+      "id": "058",
+      "title": "乾燥地域の市場とくらし",
+      "image": "images/cards/地理/058_乾燥地域の市場とくらし_kohnaru.png"
+    },
+    {
+      "id": "059",
+      "title": "寒い地域の冬市場を紹介",
+      "image": "images/cards/地理/059_寒い地域の冬市場を紹介_kohnaru.png"
+    },
+    {
+      "id": "060",
+      "title": "世界の生活と環境まとめ",
+      "image": "images/cards/地理/060_世界の生活と環境まとめ_kohnaru.png"
+    },
+    {
+      "id": "061",
+      "title": "竹島の位置を学ぼう",
+      "image": "images/cards/地理/061_竹島の位置を学ぼう_kohnaru.png"
+    },
+    {
+      "id": "062",
+      "title": "尖閣諸島の位置と情報",
+      "image": "images/cards/地理/062_尖閣諸島の位置と情報_kohnaru.png"
+    },
+    {
+      "id": "063",
+      "title": "北方領土の島々を学ぼう",
+      "image": "images/cards/地理/063_北方領土の島々を学ぼう_kohnaru.png"
+    },
+    {
+      "id": "064",
+      "title": "北方領土の位置について",
+      "image": "images/cards/地理/064_北方領土の位置について_kohnaru.png"
+    },
+    {
+      "id": "066",
+      "title": "元島民と交流する人々",
+      "image": "images/cards/地理/066_元島民と交流する人々_kohnaru.png"
+    },
+    {
+      "id": "067",
+      "title": "シベリア鉄道の旅案内",
+      "image": "images/cards/地理/067_シベリア鉄道の旅案内_kohnaru.png"
+    },
+    {
+      "id": "068",
+      "title": "サハリンの位置と日本との関係",
+      "image": "images/cards/地理/068_サハリンの位置と日本との関係_kohnaru.png"
+    },
+    {
+      "id": "069",
+      "title": "ロシアの国旗と冬の風景",
+      "image": "images/cards/地理/069_ロシアの国旗と冬の風景_kohnaru.png"
+    },
+    {
+      "id": "070",
+      "title": "ロシアの面積と日本の比較",
+      "image": "images/cards/地理/070_ロシアの面積と日本の比較_kohnaru.png"
+    },
+    {
+      "id": "071",
+      "title": "日本の47都道府県カード",
+      "image": "images/cards/地理/071_日本の47都道府県カード_kohnaru.png"
+    },
+    {
+      "id": "072",
+      "title": "日本の都道府県ガイド",
+      "image": "images/cards/地理/072_日本の都道府県ガイド_kohnaru.png"
+    },
+    {
+      "id": "073",
+      "title": "日本の地域名について学ぼう",
+      "image": "images/cards/地理/073_日本の地域名について学ぼう_kohnaru.png"
+    },
+    {
+      "id": "074",
+      "title": "県庁所在地を学ぼう",
+      "image": "images/cards/地理/074_県庁所在地を学ぼう_kohnaru.png"
+    },
+    {
+      "id": "080",
+      "title": "日本の位置と広がり",
+      "image": "images/cards/地理/080_日本の位置と広がり_kohnaru.png"
+    }
+  ]
+}
