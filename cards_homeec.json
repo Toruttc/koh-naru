@@ -1,0 +1,505 @@
+{
+  "subject": "家庭科",
+  "cards": [
+    {
+      "id": "001",
+      "title": "Tシャツ",
+      "image": "images/cards/家庭科/001_Tシャツ_kohnaru.png"
+    },
+    {
+      "id": "002",
+      "title": "ワイシャツ",
+      "image": "images/cards/家庭科/002_ワイシャツ_kohnaru.png"
+    },
+    {
+      "id": "003",
+      "title": "ブラウス",
+      "image": "images/cards/家庭科/003_ブラウス_kohnaru.png"
+    },
+    {
+      "id": "004",
+      "title": "ポロシャツ",
+      "image": "images/cards/家庭科/004_ポロシャツ_kohnaru.png"
+    },
+    {
+      "id": "005",
+      "title": "トレーナー",
+      "image": "images/cards/家庭科/005_トレーナー_kohnaru.png"
+    },
+    {
+      "id": "006",
+      "title": "パーカー",
+      "image": "images/cards/家庭科/006_パーカー_kohnaru.png"
+    },
+    {
+      "id": "007",
+      "title": "カーディガン",
+      "image": "images/cards/家庭科/007_カーディガン_kohnaru.png"
+    },
+    {
+      "id": "008",
+      "title": "セーター",
+      "image": "images/cards/家庭科/008_セーター_kohnaru.png"
+    },
+    {
+      "id": "009",
+      "title": "ベスト",
+      "image": "images/cards/家庭科/009_ベスト_kohnaru.png"
+    },
+    {
+      "id": "010",
+      "title": "ジャケット",
+      "image": "images/cards/家庭科/010_ジャケット_kohnaru.png"
+    },
+    {
+      "id": "011",
+      "title": "コート",
+      "image": "images/cards/家庭科/011_コート_kohnaru.png"
+    },
+    {
+      "id": "012",
+      "title": "ダウンジャケット",
+      "image": "images/cards/家庭科/012_ダウンジャケット_kohnaru.png"
+    },
+    {
+      "id": "013",
+      "title": "スカート",
+      "image": "images/cards/家庭科/013_スカート_kohnaru.png"
+    },
+    {
+      "id": "014",
+      "title": "プリーツスカート",
+      "image": "images/cards/家庭科/014_プリーツスカート_kohnaru.png"
+    },
+    {
+      "id": "015",
+      "title": "パンツ",
+      "image": "images/cards/家庭科/015_パンツ_kohnaru.png"
+    },
+    {
+      "id": "016",
+      "title": "ジーンズ",
+      "image": "images/cards/家庭科/016_ジーンズ_kohnaru.png"
+    },
+    {
+      "id": "017",
+      "title": "ショートパンツ",
+      "image": "images/cards/家庭科/017_ショートパンツ_kohnaru.png"
+    },
+    {
+      "id": "018",
+      "title": "ワンピース",
+      "image": "images/cards/家庭科/018_ワンピース_kohnaru.png"
+    },
+    {
+      "id": "019",
+      "title": "ジャンパースカート",
+      "image": "images/cards/家庭科/019_ジャンパースカート_kohnaru.png"
+    },
+    {
+      "id": "020",
+      "title": "エプロン",
+      "image": "images/cards/家庭科/020_エプロン_kohnaru.png"
+    },
+    {
+      "id": "021",
+      "title": "ネクタイ",
+      "image": "images/cards/家庭科/021_ネクタイ_kohnaru.png"
+    },
+    {
+      "id": "022",
+      "title": "リボン",
+      "image": "images/cards/家庭科/022_リボン_kohnaru.png"
+    },
+    {
+      "id": "023",
+      "title": "マフラー",
+      "image": "images/cards/家庭科/023_マフラー_kohnaru.png"
+    },
+    {
+      "id": "024",
+      "title": "手袋",
+      "image": "images/cards/家庭科/024_手袋_kohnaru.png"
+    },
+    {
+      "id": "025",
+      "title": "帽子",
+      "image": "images/cards/家庭科/025_帽子_kohnaru.png"
+    },
+    {
+      "id": "026",
+      "title": "靴下",
+      "image": "images/cards/家庭科/026_靴下_kohnaru.png"
+    },
+    {
+      "id": "027",
+      "title": "スニーカー",
+      "image": "images/cards/家庭科/027_スニーカー_kohnaru.png"
+    },
+    {
+      "id": "028",
+      "title": "上履き",
+      "image": "images/cards/家庭科/028_上履き_kohnaru.png"
+    },
+    {
+      "id": "029",
+      "title": "革靴",
+      "image": "images/cards/家庭科/029_革靴_kohnaru.png"
+    },
+    {
+      "id": "030",
+      "title": "レインコート",
+      "image": "images/cards/家庭科/030_レインコート_kohnaru.png"
+    },
+    {
+      "id": "031",
+      "title": "傘",
+      "image": "images/cards/家庭科/031_傘_kohnaru.png"
+    },
+    {
+      "id": "032",
+      "title": "水着",
+      "image": "images/cards/家庭科/032_水着_kohnaru.png"
+    },
+    {
+      "id": "033",
+      "title": "綿",
+      "image": "images/cards/家庭科/033_綿_kohnaru.png"
+    },
+    {
+      "id": "034",
+      "title": "麻",
+      "image": "images/cards/家庭科/034_麻_kohnaru.png"
+    },
+    {
+      "id": "035",
+      "title": "絹",
+      "image": "images/cards/家庭科/035_絹_kohnaru.png"
+    },
+    {
+      "id": "036",
+      "title": "羊毛",
+      "image": "images/cards/家庭科/036_羊毛_kohnaru.png"
+    },
+    {
+      "id": "037",
+      "title": "ポリエステル",
+      "image": "images/cards/家庭科/037_ポリエステル_kohnaru.png"
+    },
+    {
+      "id": "038",
+      "title": "ナイロン",
+      "image": "images/cards/家庭科/038_ナイロン_kohnaru.png"
+    },
+    {
+      "id": "039",
+      "title": "アクリル",
+      "image": "images/cards/家庭科/039_アクリル_kohnaru.png"
+    },
+    {
+      "id": "040",
+      "title": "レーヨン",
+      "image": "images/cards/家庭科/040_レーヨン_kohnaru.png"
+    },
+    {
+      "id": "041",
+      "title": "平織り",
+      "image": "images/cards/家庭科/041_平織り_kohnaru_redo.png"
+    },
+    {
+      "id": "042",
+      "title": "綾織り",
+      "image": "images/cards/家庭科/042_綾織り_kohnaru_redo.png"
+    },
+    {
+      "id": "043",
+      "title": "サテン織り",
+      "image": "images/cards/家庭科/043_サテン織り_kohnaru_redo.png"
+    },
+    {
+      "id": "044",
+      "title": "ニット",
+      "image": "images/cards/家庭科/044_ニット_kohnaru.png"
+    },
+    {
+      "id": "045",
+      "title": "デニム",
+      "image": "images/cards/家庭科/045_デニム_kohnaru.png"
+    },
+    {
+      "id": "046",
+      "title": "フリース",
+      "image": "images/cards/家庭科/046_フリース_kohnaru.png"
+    },
+    {
+      "id": "047",
+      "title": "レース",
+      "image": "images/cards/家庭科/047_レース_kohnaru.png"
+    },
+    {
+      "id": "048",
+      "title": "チェック柄",
+      "image": "images/cards/家庭科/048_チェック柄_kohnaru.png"
+    },
+    {
+      "id": "049",
+      "title": "ストライプ柄",
+      "image": "images/cards/家庭科/049_ストライプ柄_kohnaru.png"
+    },
+    {
+      "id": "050",
+      "title": "ドット柄",
+      "image": "images/cards/家庭科/050_ドット柄_kohnaru.png"
+    },
+    {
+      "id": "051",
+      "title": "針",
+      "image": "images/cards/家庭科/051_針_kohnaru.png"
+    },
+    {
+      "id": "052",
+      "title": "まち針",
+      "image": "images/cards/家庭科/052_まち針_kohnaru.png"
+    },
+    {
+      "id": "053",
+      "title": "縫い針セット",
+      "image": "images/cards/家庭科/053_縫い針セット_kohnaru.png"
+    },
+    {
+      "id": "054",
+      "title": "糸",
+      "image": "images/cards/家庭科/054_糸_kohnaru.png"
+    },
+    {
+      "id": "055",
+      "title": "ボビン",
+      "image": "images/cards/家庭科/055_ボビン_kohnaru.png"
+    },
+    {
+      "id": "056",
+      "title": "はさみ",
+      "image": "images/cards/家庭科/056_はさみ_kohnaru.png"
+    },
+    {
+      "id": "057",
+      "title": "糸切りばさみ",
+      "image": "images/cards/家庭科/057_糸切りばさみ_kohnaru.png"
+    },
+    {
+      "id": "058",
+      "title": "リッパー",
+      "image": "images/cards/家庭科/058_リッパー_kohnaru.png"
+    },
+    {
+      "id": "059",
+      "title": "メジャー",
+      "image": "images/cards/家庭科/059_メジャー_kohnaru.png"
+    },
+    {
+      "id": "060",
+      "title": "定規",
+      "image": "images/cards/家庭科/060_定規_kohnaru.png"
+    },
+    {
+      "id": "061",
+      "title": "チャコペン",
+      "image": "images/cards/家庭科/061_チャコペン_kohnaru.png"
+    },
+    {
+      "id": "062",
+      "title": "チャコ",
+      "image": "images/cards/家庭科/062_チャコ_kohnaru.png"
+    },
+    {
+      "id": "063",
+      "title": "しるし付け",
+      "image": "images/cards/家庭科/063_しるし付け_kohnaru.png"
+    },
+    {
+      "id": "064",
+      "title": "ものさし",
+      "image": "images/cards/家庭科/064_ものさし_kohnaru.png"
+    },
+    {
+      "id": "065",
+      "title": "待ち針入れ",
+      "image": "images/cards/家庭科/065_待ち針入れ_kohnaru.png"
+    },
+    {
+      "id": "066",
+      "title": "洋裁用クリップ",
+      "image": "images/cards/家庭科/066_洋裁用クリップ_kohnaru.png"
+    },
+    {
+      "id": "067",
+      "title": "布用のり",
+      "image": "images/cards/家庭科/067_布用のり_kohnaru.png"
+    },
+    {
+      "id": "068",
+      "title": "アイロン",
+      "image": "images/cards/家庭科/068_アイロン_kohnaru.png"
+    },
+    {
+      "id": "069",
+      "title": "アイロン台",
+      "image": "images/cards/家庭科/069_アイロン台_kohnaru.png"
+    },
+    {
+      "id": "070",
+      "title": "霧吹き",
+      "image": "images/cards/家庭科/070_霧吹き_kohnaru.png"
+    },
+    {
+      "id": "071",
+      "title": "ミシンの各部名称",
+      "image": "images/cards/家庭科/071_ミシンの各部名称_kohnaru.png"
+    },
+    {
+      "id": "072",
+      "title": "ミシンの縫い方",
+      "image": "images/cards/家庭科/072_ミシンの縫い方_kohnaru.png"
+    },
+    {
+      "id": "073",
+      "title": "直線縫い",
+      "image": "images/cards/家庭科/073_直線縫い_kohnaru.png"
+    },
+    {
+      "id": "074",
+      "title": "返し縫い",
+      "image": "images/cards/家庭科/074_返し縫い_kohnaru.png"
+    },
+    {
+      "id": "075",
+      "title": "コーナーの縫い方",
+      "image": "images/cards/家庭科/075_コーナーの縫い方_kohnaru.png"
+    },
+    {
+      "id": "076",
+      "title": "布端の始末・ジグザグ縫い",
+      "image": "images/cards/家庭科/076_布端の始末_ジグザグ縫い_kohnaru.png"
+    },
+    {
+      "id": "077",
+      "title": "ボタンの付け方",
+      "image": "images/cards/家庭科/077_ボタンの付け方_kohnaru.png"
+    },
+    {
+      "id": "078",
+      "title": "ボタンホールの作り方",
+      "image": "images/cards/家庭科/078_ボタンホールの作り方_kohnaru.png"
+    },
+    {
+      "id": "079",
+      "title": "ミシン糸のかけ方",
+      "image": "images/cards/家庭科/079_ミシン糸のかけ方_kohnaru.png"
+    },
+    {
+      "id": "080",
+      "title": "下糸の準備・ボビン巻き",
+      "image": "images/cards/家庭科/080_下糸の準備_ボビン巻き_kohnaru.png"
+    },
+    {
+      "id": "081",
+      "title": "アイロンのかけ方",
+      "image": "images/cards/家庭科/081_アイロンのかけ方_kohnaru.png"
+    },
+    {
+      "id": "082",
+      "title": "スチームの使い方",
+      "image": "images/cards/家庭科/082_スチームの使い方_kohnaru.png"
+    },
+    {
+      "id": "083",
+      "title": "洗濯機の使い方",
+      "image": "images/cards/家庭科/083_洗濯機の使い方_kohnaru.png"
+    },
+    {
+      "id": "084",
+      "title": "手洗いの方法",
+      "image": "images/cards/家庭科/084_手洗いの方法_kohnaru.png"
+    },
+    {
+      "id": "085",
+      "title": "洗剤の入れ方",
+      "image": "images/cards/家庭科/085_洗剤の入れ方_kohnaru.png"
+    },
+    {
+      "id": "086",
+      "title": "洗濯表示の見方",
+      "image": "images/cards/家庭科/086_洗濯表示の見方_kohnaru.png"
+    },
+    {
+      "id": "087",
+      "title": "干し方・ハンガー干し",
+      "image": "images/cards/家庭科/087_干し方_ハンガー干し_kohnaru.png"
+    },
+    {
+      "id": "088",
+      "title": "干し方・平干し",
+      "image": "images/cards/家庭科/088_干し方_平干し_kohnaru.png"
+    },
+    {
+      "id": "089",
+      "title": "たたみ方",
+      "image": "images/cards/家庭科/089_たたみ方_kohnaru.png"
+    },
+    {
+      "id": "090",
+      "title": "収納のしかた",
+      "image": "images/cards/家庭科/090_収納のしかた_kohnaru.png"
+    },
+    {
+      "id": "091",
+      "title": "毛玉の取り方",
+      "image": "images/cards/家庭科/091_毛玉の取り方_kohnaru.png"
+    },
+    {
+      "id": "092",
+      "title": "ほつれの直し方",
+      "image": "images/cards/家庭科/092_ほつれの直し方_kohnaru.png"
+    },
+    {
+      "id": "093",
+      "title": "穴あきの縫い方",
+      "image": "images/cards/家庭科/093_穴あきの縫い方_kohnaru.png"
+    },
+    {
+      "id": "094",
+      "title": "ボタンの付け直し",
+      "image": "images/cards/家庭科/094_ボタンの付け直し_kohnaru.png"
+    },
+    {
+      "id": "095",
+      "title": "リメイクの例",
+      "image": "images/cards/家庭科/095_リメイクの例_kohnaru.png"
+    },
+    {
+      "id": "096",
+      "title": "古着の活用",
+      "image": "images/cards/家庭科/096_古着の活用_kohnaru.png"
+    },
+    {
+      "id": "097",
+      "title": "リサイクルの流れ",
+      "image": "images/cards/家庭科/097_リサイクルの流れ_kohnaru.png"
+    },
+    {
+      "id": "098",
+      "title": "エコマークの例",
+      "image": "images/cards/家庭科/098_エコマークの例_kohnaru.png"
+    },
+    {
+      "id": "099",
+      "title": "衣類の寿命をのばす工夫",
+      "image": "images/cards/家庭科/099_衣類の寿命をのばす工夫_kohnaru.png"
+    },
+    {
+      "id": "100",
+      "title": "寄付する・ゆずる",
+      "image": "images/cards/家庭科/100_寄付する_ゆずる_kohnaru.png"
+    }
+  ]
+}
