@@ -1,0 +1,131 @@
+{
+  "subject": "歴史",
+  "cards": [
+    {
+      "id": "001",
+      "image": "images/cards/歴史/001_%E7%8C%BF%E4%BA%BA%E3%81%AE%E6%AD%A9%E3%81%8D%E3%81%AF%E3%81%98%E3%82%81_kohnaru.png",
+      "title": "001_猿人の歩きはじめ_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "002",
+      "image": "images/cards/歴史/002_%E5%8E%9F%E4%BA%BA%E3%81%A8%E7%81%AB%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9_kohnaru.png",
+      "title": "002_原人と火の使い方_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "003",
+      "image": "images/cards/歴史/003_%E6%96%B0%E4%BA%BA%E3%81%AE%E6%96%87%E5%8C%96%E3%81%A8%E3%82%B3%E3%83%9F%E3%83%A5%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3_kohnaru.png",
+      "title": "003_新人の文化とコミュニケーション_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "004",
+      "image": "images/cards/歴史/004_%E6%97%A7%E7%9F%B3%E5%99%A8%E6%99%82%E4%BB%A3%E3%81%AE%E7%8B%A9%E3%82%8A%E3%81%A8%E6%8E%A1%E9%9B%86_kohnaru.png",
+      "title": "004_旧石器時代の狩りと採集_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "005",
+      "image": "images/cards/歴史/005_%E6%96%B0%E7%9F%B3%E5%99%A8%E6%99%82%E4%BB%A3%E3%81%AE%E8%BE%B2%E8%80%95%E7%94%9F%E6%B4%BB_kohnaru.png",
+      "title": "005_新石器時代の農耕生活_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "006",
+      "image": "images/cards/歴史/006_%E5%9C%9F%E5%99%A8%E3%81%A8%E5%AE%9A%E4%BD%8F%E7%94%9F%E6%B4%BB%E3%81%AE%E9%A2%A8%E6%99%AF_kohnaru.png",
+      "title": "006_土器と定住生活の風景_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "007",
+      "image": "images/cards/歴史/007_%E8%BE%B2%E6%A5%AD%E3%81%AE%E5%A7%8B%E3%81%BE%E3%82%8A%E3%81%AE%E9%A2%A8%E6%99%AF_kohnaru.png",
+      "title": "007_農業の始まりの風景_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "008",
+      "image": "images/cards/歴史/008_%E6%9D%91%E3%81%8B%E3%82%89%E9%83%BD%E5%B8%82%E3%81%B8%E3%81%AE%E9%80%B2%E5%8C%96_kohnaru.png",
+      "title": "008_村から都市への進化_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "009",
+      "image": "images/cards/歴史/009_%E5%9B%BD%E5%AE%B6%E3%81%AE%E6%88%90%E7%AB%8B%E3%81%A8%E7%B5%B1%E6%B2%BB%E6%B3%95_kohnaru.png",
+      "title": "009_国家の成立と統治法_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "010",
+      "image": "images/cards/歴史/010_%E6%96%87%E5%AD%97%E3%81%A8%E8%A8%98%E9%8C%B2%E3%81%AE%E5%A7%8B%E3%81%BE%E3%82%8A_kohnaru.png",
+      "title": "010_文字と記録の始まり_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "011",
+      "image": "images/cards/歴史/011_%E5%9B%9B%E5%A4%A7%E6%96%87%E6%98%8E%E3%81%AE%E4%BD%8D%E7%BD%AE%E3%81%A8%E6%B2%B3%E5%B7%9D_kohnaru.png",
+      "title": "011_四大文明の位置と河川_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "012",
+      "image": "images/cards/歴史/012_%E3%82%A8%E3%82%B8%E3%83%97%E3%83%88%E6%96%87%E6%98%8E%E3%81%AE%E9%A2%A8%E6%99%AF_kohnaru.png",
+      "title": "012_エジプト文明の風景_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "013",
+      "image": "images/cards/歴史/013_%E3%83%A1%E3%82%BD%E3%83%9D%E3%82%BF%E3%83%9F%E3%82%A2%E6%96%87%E6%98%8E%E3%81%AE%E7%B4%B9%E4%BB%8B_kohnaru.png",
+      "title": "013_メソポタミア文明の紹介_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "014",
+      "image": "images/cards/歴史/014_%E3%82%A4%E3%83%B3%E3%83%80%E3%82%B9%E6%96%87%E6%98%8E%E3%81%AE%E8%A8%88%E7%94%BB%E9%83%BD%E5%B8%82_kohnaru.png",
+      "title": "014_インダス文明の計画都市_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "015",
+      "image": "images/cards/歴史/015_%E4%B8%AD%E5%9B%BD%E6%96%87%E6%98%8E%E3%81%A8%E4%B8%BB%E8%A6%81%E3%81%AA%E5%B7%9D_kohnaru.png",
+      "title": "015_中国文明と主要な川_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "016",
+      "image": "images/cards/歴史/016_%E5%9B%9B%E5%A4%A7%E6%96%87%E6%98%8E_%E6%AF%94%E8%BC%83%E3%82%AB%E3%83%BC%E3%83%89_kohnaru.png",
+      "title": "016_四大文明_比較カード_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "017",
+      "image": "images/cards/歴史/017_%E3%82%AE%E3%83%AA%E3%82%B7%E3%83%A3%E3%81%AE%E3%82%A2%E3%83%86%E3%83%8D%E3%81%A8%E6%B0%91%E4%B8%BB%E6%94%BF%E6%B2%BB_kohnaru.png",
+      "title": "017_ギリシャのアテネと民主政治_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "018",
+      "image": "images/cards/歴史/018_%E3%83%AD%E3%83%BC%E3%83%9E%E5%B8%9D%E5%9B%BD%E3%81%AE%E7%B9%81%E6%A0%84%E3%81%A8%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9_kohnaru.png",
+      "title": "018_ローマ帝国の繁栄とインフラ_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "019",
+      "image": "images/cards/歴史/019_%E4%BB%8F%E6%95%99%E3%81%AE%E6%95%99%E3%81%88%E3%81%A8%E3%82%B7%E3%83%A3%E3%82%AB%E3%81%AE%E6%95%99%E7%A4%BA_kohnaru.png",
+      "title": "019_仏教の教えとシャカの教示_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "020",
+      "image": "images/cards/歴史/020_%E3%82%A4%E3%82%A8%E3%82%B9%E3%81%AE%E6%95%99%E3%81%88%E3%81%A8%E3%83%AD%E3%83%BC%E3%83%9E%E5%B8%9D%E5%9B%BD_kohnaru.png",
+      "title": "020_イエスの教えとローマ帝国_kohnaru.png",
+      "important": false
+    },
+    {
+      "id": "021",
+      "image": "images/cards/歴史/021_%E5%AD%94%E5%AD%90%E3%81%AE%E6%95%99%E3%81%88%E3%81%A8%E5%84%92%E6%95%99%E3%81%AE%E4%B8%96%E7%95%8C_kohnaru.png",
+      "title": "021_孔子の教えと儒教の世界_kohnaru.png",
+      "important": false
+    }
+  ]
+}
