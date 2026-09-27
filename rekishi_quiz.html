@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>歴史 一問ずつカード（7〜14）</title>
+<meta name="description" content="歴史プリント7〜14の問題を1問ずつ。赤シートをタップして答えを確認できます。">
+<meta property="og:title" content="歴史 一問ずつカード（7〜14）">
+<meta property="og:description" content="プリント7〜14・179問。赤シートをタップして答えを見よう。続きからもできます。">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#13ABA3">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="歴史カード">
+<style>
+:root{
+  --teal:#13ABA3; --teal-d:#0E8580; --orange:#F4845F; --red:#E5484D; --redsheet:#E5484D;
+  --bg:#F3F8F8; --card:#FFFFFF; --ink:#1F2A2A; --sub:#5B6B6B; --line:#D6E4E3; --ok:#13ABA3; --ng:#F4845F;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#0F1A1A; --card:#182626; --ink:#E8F1F0; --sub:#9DB0AE; --line:#2A3C3B; --red:#FF7A7F; }
+}
+:root[data-theme="dark"]{ --bg:#0F1A1A; --card:#182626; --ink:#E8F1F0; --sub:#9DB0AE; --line:#2A3C3B; --red:#FF7A7F; }
+html{scroll-padding-top:env(safe-area-inset-top,0px); height:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0; min-height:100%; background:var(--bg); color:var(--ink);
+  font-family:"Yu Gothic","YuGothic","游ゴシック","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
+  -webkit-tap-highlight-color:transparent}
+.wrap{max-width:560px; margin:0 auto; padding:16px 16px 32px}
+button{font:inherit; color:inherit; cursor:pointer}
+button:focus-visible{outline:3px solid var(--orange); outline-offset:2px}
+h1{font-size:1.35rem; margin:8px 0 4px; letter-spacing:.02em}
+.lead{color:var(--sub); margin:0 0 18px; font-size:.95rem; line-height:1.6}
+
+/* home */
+.sheet{display:flex; align-items:center; gap:14px; width:100%; text-align:left; background:var(--card);
+  border:1.5px solid var(--line); border-left:6px solid var(--teal); border-radius:12px; padding:14px 14px; margin-bottom:10px}
+.sheet .no{font-weight:800; font-size:1.4rem; color:var(--teal); min-width:2.2em; text-align:center}
+.sheet .tt{flex:1; font-weight:700; line-height:1.4}
+.sheet .tt small{display:block; font-weight:400; color:var(--sub); font-size:.8rem; margin-top:2px}
+.sheet .done{font-size:.8rem; color:var(--sub); white-space:nowrap}
+.sheet.clear{border-left-color:var(--orange)}
+.sheet.clear .done{color:var(--orange); font-weight:700}
+.row{display:flex; gap:10px; margin:6px 0 16px}
+.big{flex:1; border:none; border-radius:12px; padding:14px 10px; font-weight:800; font-size:1rem; background:var(--teal); color:#fff}
+.big.alt{background:var(--card); color:var(--teal); border:2px solid var(--teal)}
+.big:disabled{opacity:.4}
+.resume{display:block; width:100%; margin:0 0 10px; background:var(--orange); text-align:left; padding:14px 16px; line-height:1.5}
+.resume small{display:block; font-weight:600; opacity:.9; font-size:.85rem}
+
+/* quiz */
+.top{display:flex; align-items:center; gap:10px; margin-bottom:10px}
+.back{border:none; background:none; color:var(--teal); font-weight:700; padding:8px 4px}
+.bar{flex:1; height:10px; background:var(--line); border-radius:6px; overflow:hidden}
+.bar i{display:block; height:100%; background:var(--teal); width:0; transition:width .3s}
+.count{font-size:.85rem; color:var(--sub); min-width:4.5em; text-align:right}
+.card{background:var(--card); border-radius:16px; border:1.5px solid var(--line); padding:20px 18px 18px; min-height:220px}
+.tag{display:inline-block; font-size:.78rem; color:var(--teal-d); background:rgba(19,171,163,.12); border-radius:6px; padding:3px 8px; margin-bottom:12px}
+:root[data-theme="dark"] .tag{color:#7fdcd6}
+.q{font-size:1.25rem; line-height:1.85; margin:0 0 18px; font-weight:600}
+.q .blank{display:inline-block; min-width:4.2em; border-bottom:3px solid var(--orange); margin:0 .15em; text-align:center; color:var(--orange); font-weight:800}
+.ans{position:relative; border:2px dashed var(--line); border-radius:12px; padding:16px; min-height:70px;
+  font-size:1.35rem; font-weight:800; color:var(--red); line-height:1.6; overflow:hidden}
+.ans .lbl{display:block; font-size:.75rem; color:var(--sub); font-weight:600; margin-bottom:4px}
+.sheetcover{position:absolute; inset:0; background:var(--redsheet); color:#fff; border:none; border-radius:10px;
+  font-weight:800; font-size:1rem; display:flex; align-items:center; justify-content:center; transition:transform .35s ease}
+.ans.open .sheetcover{transform:translateY(105%)}
+#aText{visibility:hidden}
+.ans.open #aText{visibility:visible}
+.sheetcover{z-index:2}
+@media (prefers-reduced-motion: reduce){ .sheetcover,.bar i{transition:none} }
+.tools{display:flex; justify-content:flex-end; margin-top:10px}
+.speak{border:1.5px solid var(--line); background:var(--card); border-radius:999px; padding:8px 14px; font-size:.9rem}
+.judge{display:flex; gap:10px; margin-top:14px}
+.judge button{flex:1; border:none; border-radius:14px; padding:16px 8px; font-size:1.15rem; font-weight:800; color:#fff}
+.judge .o{background:var(--ok)} .judge .x{background:var(--ng)}
+.judge button:disabled{opacity:.35}
+
+/* result */
+.result{text-align:center; padding:26px 16px}
+.score{font-size:3rem; font-weight:900; color:var(--teal); margin:6px 0}
+.score small{font-size:1.1rem; color:var(--sub)}
+.msg{color:var(--sub); margin-bottom:20px; line-height:1.6}
+.hidden{display:none !important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section id="home">
+  <a href="index.html" style="display:inline-block;color:var(--teal);font-weight:700;text-decoration:none;padding:8px 4px">‹ こーなるトップ</a>
+  <h1>歴史 一問ずつカード</h1>
+  <p class="lead">プリント7〜14の問題です。声に出して読んでから、赤シートをタップして答えを見よう。</p>
+  <button class="big resume hidden" id="resumeBtn"></button>
+  <div class="row">
+    <button class="big" id="allBtn">ぜんぶ</button>
+    <button class="big alt" id="ngBtn">×の問題だけ</button>
+  </div>
+  <div id="list"></div>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <button class="back" id="backBtn">‹ もどる</button>
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="count" id="count"></div>
+  </div>
+  <div class="card">
+    <span class="tag" id="tag"></span>
+    <p class="q" id="qText"></p>
+    <div class="ans" id="ans">
+      <span class="lbl">こたえ</span>
+      <span id="aText"></span>
+      <button class="sheetcover" id="cover">タップして答えを見る</button>
+    </div>
+    <div class="tools"><button class="speak" id="speakBtn">🔊 読み上げ</button></div>
+  </div>
+  <div class="judge">
+    <button class="o" id="okBtn" disabled>○ できた</button>
+    <button class="x" id="ngJudge" disabled>× もう一回</button>
+  </div>
+</section>
+
+<section id="result" class="hidden">
+  <div class="result">
+    <div id="resTitle" style="font-weight:800;font-size:1.2rem"></div>
+    <div class="score" id="score"></div>
+    <p class="msg" id="resMsg"></p>
+    <div class="row">
+      <button class="big" id="retryBtn">×だけもう一回</button>
+      <button class="big alt" id="homeBtn">プリントを選ぶ</button>
+    </div>
+  </div>
+</section>
+
+</div>
+<script>
+const SHEETS={
+ 7:"三大宗教の始まり",8:"日本人はどこから来たのか？",9:"日本人はどのように暮らしていたのか",10:"日本の宝…米作り！",
+ 11:"卑弥呼のナゾ…",12:"古墳のナゾ…",13:"文化を伝えてくれたヒト…",14:"あつく三宝を敬え"
+};
+const B="［？］";
+const Q=[
+// 7
+[7,`人類は自然の働きに、${B}を超える力を感じた。`,"人間"],
+[7,`→${B}の存在？`,"神"],
+[7,`一族が栄えること、${B}後、安らかに…→神に祈る！`,"死"],
+[7,`一族が栄えること、死後、安らかに…→神に${B}！`,"祈る"],
+[7,`インドで生まれた宗教は？　${B}の始まり`,"仏教"],
+[7,`仏教を始めたのは誰？`,"釈迦"],
+[7,`仏教の始まりの国は？`,"インド"],
+[7,`仏教の時代背景：${B}制度で差別されている人々が苦しんでいる。`,"カースト"],
+[7,`釈迦は「修行を積んで${B}を開けば、心の安らぎを得られる」と説いた。`,"悟り"],
+[7,`釈迦は「修行を積んで悟りを開けば、${B}を得られる」と説いた。`,"心の安らぎ"],
+[7,`仏教の伝わり方：インド→${B}→韓国→日本→東南アジア`,"中国"],
+[7,`仏教の伝わり方：インド→中国→韓国→${B}→東南アジア`,"日本"],
+[7,`B.C.4年頃に始まった宗教は？　${B}の始まり`,"キリスト教"],
+[7,`キリスト教を始めたのは誰？`,"イエス"],
+[7,`キリスト教の始まりの国は？　当時${B}（今のイスラエル）`,"ローマ帝国"],
+[7,`キリスト教の時代背景：${B}帝国によって支配された奴隷や貧しい人々が苦しむ。`,"ローマ"],
+[7,`キリスト教の時代背景：ローマ帝国によって支配された${B}や貧しい人々が苦しむ。`,"奴隷"],
+[7,`イエスは「${B}を信じれば、愛を受けて救われる」と説いた。`,"神"],
+[7,`イエスは「神を信じれば、愛を受けて${B}」と説いた。`,"救われる"],
+[7,`キリスト教は初めのうち、${B}によって迫害された。`,"ローマ皇帝"],
+[7,`キリスト教は4世紀末に、ローマの${B}に定められた。`,"国教"],
+[7,`キリスト教はその後どこに伝えられた？（3つ）`,"アメリカ・アジア・アフリカ"],
+[7,`7世紀頃に始まった宗教は？　${B}の始まり`,"イスラム教"],
+[7,`イスラム教を始めたのは誰？`,"マホメット"],
+[7,`イスラム教の始まりの場所は？`,"アラビア半島"],
+[7,`イスラム教の時代背景：${B}の差が拡大する。伝統的な社会が崩壊する。`,"貧富"],
+[7,`マホメットは「${B}はこの世の全てをつくり、全てを見通している」と説いた。`,"アッラー"],
+[7,`アッラーに従う者は${B}に行けるが、逆らえば罰を受ける。`,"天国"],
+[7,`アッラーに従う者は天国に行けるが、逆らえば${B}を受ける。`,"罰"],
+[7,`イスラム教の伝わり方：アラビア半島→${B}→北アフリカ→東南アジア`,"西アジア"],
+[7,`イスラム教の伝わり方：アラビア半島→西アジア→北アフリカ→${B}`,"東南アジア"],
+// 8
+[8,`数万年前の地層から、長野県${B}湖で発見があった。`,"野尻"],
+[8,`野尻湖で見つかった、${B}の牙`,"ナウマンゾウ"],
+[8,`野尻湖で見つかった、${B}の角`,"オオツノジカ"],
+[8,`大陸にいる動物が日本にいたということは、どんなことが予想できる？`,"ユーラシア大陸と日本は陸つづきだった"],
+[8,`群馬県${B}遺跡`,"岩宿"],
+[8,`1万年以上前の関東ローム層から${B}石器が見つかる！`,"打製"],
+[8,`打製石器が見つかる！＝${B}時代`,"旧石器"],
+[8,`${B}石の石器`,"黒曜"],
+[8,`岩宿遺跡の発見から、どんなことが予想できる？`,"1万年以上前から人類が日本にいた"],
+[8,`その証拠：${B}も見つかる！`,"人骨"],
+[8,`沖縄県${B}人`,"港川"],
+[8,`やがて1万年前、${B}期が終わる`,"氷河"],
+[8,`氷が解けて${B}が上昇する`,"海面"],
+[8,`${B}とつながっていた浅い陸地が海になった`,"大陸"],
+[8,`大陸とつながっていた浅い陸地が${B}になった`,"海"],
+[8,`→現在の${B}ができあがる！`,"日本列島"],
+[8,`旧石器時代の新人は、①どこから来た？`,"ユーラシア大陸の北海道側（または朝鮮半島側）から"],
+[8,`旧石器時代の新人は、②何をしながら来た？`,"動物を狩りながら"],
+[8,`旧石器時代の新人は、③どうやって来た？`,"歩いて（動物を追って）来た"],
+// 9
+[9,`このプリントのねらいは？`,"縄文時代のくらしを知る"],
+[9,`初めの頃のくらし：${B}を使って狩りをした。`,"打製石器"],
+[9,`初めの頃のくらし：植物を${B}した。`,"採集"],
+[9,`初めの頃は、どこに住んだ？`,"簡単なテントや岩かげ"],
+[9,`初めの頃は、食べ物を求めてどうくらした？`,"移動してくらした"],
+[9,`火を使って何をした？（2つ）`,"体をあたためる・獲物を焼いて食べる"],
+[9,`「縄文土器」の特色とは？`,"厚手・黒褐色・表面に縄目の文様"],
+[9,`「縄文土器」を使っていた時代を何という？`,"縄文時代"],
+[9,`定住するようになってから、どんな家を造って住んだ？`,"たて穴住居"],
+[9,`定住後のくらし：${B}をつける`,"耳飾り"],
+[9,`定住後のくらし：歯をぬく${B}をする`,"抜歯"],
+[9,`定住後のくらし：祈りのための人形、${B}を作る`,"土偶"],
+[9,`人が死ぬと、手足を折り曲げて埋める${B}をする`,"屈葬"],
+[9,`「貝塚」とは何？`,"貝殻や魚の骨を捨てたゴミ捨て場"],
+[9,`「土偶」とは何？`,"祈りのために用いた人形"],
+[9,`「屈葬」とは何？`,"死者の霊による災いを防ぐために、手足を折り曲げて埋めること"],
+[9,`青森県にある縄文時代の有名な遺跡は？　${B}遺跡`,"三内丸山"],
+[9,`日本列島に新人が住み着いたのは、どんな条件がそろっていたから？`,"温暖で、木の実・けもの・魚・貝などの食料が豊富で住みやすかった"],
+// 10
+[10,`このプリントのねらいは？`,"弥生時代のくらしを知る"],
+[10,`B.C.8世紀頃、${B}半島から移り住んだ人々によって稲作が伝わる`,"朝鮮"],
+[10,`稲作は、まず${B}北部に伝わった`,"九州"],
+[10,`B.C.8世紀頃、九州北部に${B}が伝わる`,"稲作"],
+[10,`稲作は${B}地方にまで広がる`,"東北"],
+[10,`稲作が始まって、水田の近くに何を造った？`,"むら"],
+[10,`たて穴住居の近くに${B}を造った`,"高床倉庫"],
+[10,`稲作が始まって、どんな人が現れた？（2つ）`,"人々を従える有力者・いくつかの村をまとめる王"],
+[10,`稲作と一緒に大陸から伝わったもの①：${B}（銅鐸・銅鏡・銅剣・銅矛）`,"青銅器"],
+[10,`稲作と一緒に大陸から伝わったもの②：${B}（武器・工具・農具）`,"鉄器"],
+[10,`稲作と一緒に大陸から伝わったもの③：${B}土器`,"弥生"],
+[10,`「弥生土器」の特色とは？`,"高温で焼かれた・赤褐色・薄手・かたい"],
+[10,`「弥生土器」を使っていた時代を何という？`,"弥生時代"],
+[10,`高床倉庫の工夫①：${B}を防ぐために高床になっている`,"湿気"],
+[10,`高床倉庫の工夫②：ねずみが入らないように${B}を備える`,"ねずみ返し"],
+[10,`稲刈りに使ったと考えられる磨製石器とは？`,"石包丁"],
+[10,`「銅鐸」は何に使われたと考えられる？`,"祭り"],
+[10,`佐賀県にある弥生時代の有名な遺跡は？　${B}遺跡`,"吉野ヶ里"],
+[10,`日本で稲作が盛んになったのは、どんな条件がそろっていたから？`,"暖かい気候・水が豊富（降水量・川）"],
+// 11
+[11,`このプリントのねらいは？`,"邪馬台国について知る"],
+[11,`紀元前後の日本について知る方法とは？`,"中国の歴史書で調べる"],
+[11,`B.C.1世紀「${B}地理志」`,"漢書"],
+[11,`楽浪郡のかなたに${B}が住んでいて…`,"倭人"],
+[11,`倭人は100余りの${B}に分かれている`,"くに"],
+[11,`1世紀半ば「${B}東夷伝」`,"後漢書"],
+[11,`倭の${B}が漢（後漢）に使いを送った`,"奴国"],
+[11,`光武帝は奴国の王に${B}とひもを授けた`,"金印"],
+[11,`金印の意味は？　（　　）として認めるぞヨ`,"漢の倭の奴の国王"],
+[11,`3世紀「${B}」`,"魏志倭人伝"],
+[11,`この時代、中国も${B}の三国時代`,"魏・呉・蜀"],
+[11,`「倭国大乱」とはどういう意味？`,"倭国は乱れ、長い間戦いが続いている"],
+[11,`倭の女王${B}が魏の皇帝に使いを送った`,"卑弥呼"],
+[11,`卑弥呼が${B}の皇帝に使いを送った`,"魏"],
+[11,`皇帝は女王に${B}という称号と金印や銅鏡100枚などを授けた`,"親魏倭王"],
+[11,`魏志倭人伝より：卑弥呼を${B}とした`,"女王"],
+[11,`魏志倭人伝より：卑弥呼には夫はなく、${B}が助けた`,"弟"],
+[11,`魏志倭人伝より：卑弥呼は${B}で人々を治めた`,"まじない"],
+[11,`魏志倭人伝より：卑弥呼が死ぬと${B}に埋められた`,"大きな墓"],
+[11,`魏志倭人伝より：${B}人もの女の奴隷が仕えた`,"1000"],
+[11,`魏志倭人伝より：宮殿には${B}や柵が作られた`,"物見やぐら"],
+[11,`魏志倭人伝より：卑弥呼が死んだ後、${B}を王とした`,"壱与"],
+[11,`邪馬台国はどこにあった？ 2つの説と理由`,"九州説（吉野ヶ里遺跡かも）・畿内（大和）説（巨大な古墳が卑弥呼のものかも）"],
+// 12
+[12,`このプリントのねらいは？`,"古墳について調べる"],
+[12,`3世紀後半、${B}盆地を中心とする地域に強大な勢力ができる`,"奈良"],
+[12,`その勢力の名前とは？`,"大和政権"],
+[12,`その勢力の王を何という？`,"大王"],
+[12,`王に従う有力者たちとは？`,"豪族"],
+[12,`王や豪族の墓を何という？`,"古墳"],
+[12,`5世紀後半までに、どれほどの勢力になった？`,"九州地方から東北地方南部までの豪族を従えた"],
+[12,`一番大きな古墳は？`,"大仙古墳（大阪府）"],
+[12,`前方後円墳（100m以上）は、どこに多く分布する？`,"近畿（大和）地方"],
+[12,`古墳の周りに並べられたもの＝${B}`,"埴輪（と石）"],
+[12,`古墳に納められたもの①（鏡）`,"銅鏡"],
+[12,`古墳に納められたもの②（玉）`,"玉（まが玉）"],
+[12,`古墳に納められたもの③（鉄製）`,"鉄製の武器・馬具・かぶと・よろい"],
+[12,`古墳に納められたもの④（その他）`,"かんむり・大刀・耳かざり・鉄ののべ板"],
+[12,`大王や豪族が巨大古墳を造ったのはなぜ？`,"自分の権力を周囲に示すため"],
+// 13
+[13,`このプリントのねらいは？`,"渡来人が日本に伝えてくれたものを知る"],
+[13,`4世紀、高句麗の${B}の碑文`,"好太王"],
+[13,`${B}が海を渡り、百済を破り、新羅を征服した`,"倭"],
+[13,`倭が海を渡り、百済を破り、${B}を征服した`,"新羅"],
+[13,`5世紀「${B}倭国伝」`,"宋書"],
+[13,`倭王${B}が宋の皇帝に手紙を出した`,"武"],
+[13,`倭王武が${B}の皇帝に手紙を出した`,"宋"],
+[13,`倭王武の手紙：東は${B}か国を従えました`,"55"],
+[13,`倭王武の手紙：西は${B}か国を従えました`,"66"],
+[13,`倭王武の手紙：海を渡り朝鮮半島の${B}か国を従えました`,"95"],
+[13,`倭王武の手紙：貢物をお贈りしたいのですが、${B}が邪魔をします`,"高句麗"],
+[13,`倭王武＝${B}大王`,"ワカタケル"],
+[13,`埼玉県稲荷山古墳から出土した${B}`,"鉄剣"],
+[13,`熊本県江田船山古墳から出土した${B}`,"鉄刀"],
+[13,`倭王の勢力は${B}から関東地方までに及んでいる`,"九州地方"],
+[13,`倭王の勢力は九州地方から${B}までに及んでいる`,"関東地方"],
+[13,`戦いを逃れ、${B}半島から日本列島に移り住んだ人々がいた`,"朝鮮"],
+[13,`朝鮮半島から日本列島に移り住んだ人々＝${B}`,"渡来人"],
+[13,`渡来人が伝えた、かたい土器は？`,"須恵器"],
+[13,`須恵器を作る技術＝${B}（のぼりがま）`,"あながま"],
+[13,`渡来人が伝えた文字は？`,"漢字（経典）"],
+[13,`渡来人が伝えた教え・宗教は？（2つ）`,"儒学・仏教"],
+[13,`渡来人が伝えた、料理に使う設備は？`,"かまど"],
+[13,`渡来人が伝えた、建物の建て方は？`,"礎石建築"],
+[13,`渡来人が伝えた、書く道具・暦は？`,"すずり・墨・筆・暦"],
+[13,`日本の文化は、どんな人々によって築かれた？`,"戦乱を避けて朝鮮半島から移り住んだ渡来人"],
+[13,`5世紀の東アジアの地図：朝鮮半島の北にある国は？`,"高句麗"],
+[13,`5世紀の東アジアの地図：中国の南朝の国は？`,"宋"],
+// 14
+[14,`このプリントのねらいは？`,"聖徳太子はどんな国を目指したのか"],
+[14,`朝鮮半島では${B}が伽耶地域を滅ぼす`,"新羅"],
+[14,`中国では${B}が南北朝を統一する`,"隋"],
+[14,`隋は${B}という法律をつくった`,"律令"],
+[14,`隋は法律や${B}制度をつくった`,"戸籍"],
+[14,`試験で${B}の人材を集め、組織を充実させた`,"役人"],
+[14,`隋の2代皇帝は？`,"煬帝"],
+[14,`煬帝が${B}を建設した`,"大運河"],
+[14,`${B}と結びつき、新しい知識と技術を活用した蘇我氏が勢力を持つ`,"渡来人"],
+[14,`渡来人と結びつき、新しい知識と技術を活用した${B}氏が勢力を持つ`,"蘇我"],
+[14,`女性の${B}天皇が即位`,"推古"],
+[14,`推古天皇を、おいの${B}と蘇我馬子が助ける`,"聖徳太子"],
+[14,`聖徳太子がやったこと①：${B}の制度`,"冠位十二階"],
+[14,`冠位十二階：家柄にとらわれず、才能や功績のある人物に${B}の色で地位を表す`,"冠"],
+[14,`冠位十二階の冠の色（6色・上から）`,"紫・青・赤・黄・白・黒"],
+[14,`聖徳太子がやったこと②：${B}で役人の心構えを示す`,"十七条の憲法"],
+[14,`聖徳太子がやったこと③：${B}を派遣する`,"遣隋使"],
+[14,`遣隋使として派遣されたのは誰？`,"小野妹子"],
+[14,`遣隋使を派遣した目的は？`,"隋の進んだ制度や文化を取り入れるため"],
+[14,`聖徳太子がやったこと④：${B}を重んじ、寺をいくつも造った`,"仏教"],
+[14,`仏教を重んじ、寺をいくつも造った＝${B}文化`,"飛鳥"],
+[14,`世界最古の木造建築＝${B}`,"法隆寺"],
+[14,`法隆寺にある仏像は？`,"釈迦三尊像"],
+[14,`広隆寺にある仏像は？`,"弥勒菩薩像"],
+[14,`中国・インド・西アジアや朝鮮の影響を受けた作品（法隆寺の建物）`,"法隆寺金堂の壁画・法隆寺回廊の柱"],
+[14,`聖徳太子はどんな国を目指した？`,"仏教や儒教の考えを取り入れながら、大王（天皇）を中心とする国"],
+[8,`（資料集）野尻湖の化石「月と星」。「月」にたとえられたのは何？`,"ナウマンゾウの牙"],
+[8,`（資料集）野尻湖の化石「月と星」。「星」にたとえられたのは何？`,"オオツノジカの角"]
+].map((r,i)=>({id:i,s:r[0],q:r[1],a:r[2]}));
+
+// storage (per-viewer only)
+let rec={};
+try{ rec=JSON.parse(localStorage.getItem("rekishi_rec")||"{}")||{}; }catch(e){ rec={}; }
+function save(){ try{ localStorage.setItem("rekishi_rec",JSON.stringify(rec)); }catch(e){} }
+
+function saveSession(){ try{ localStorage.setItem("rekishi_session",JSON.stringify({ids:deck.map(q=>q.id),pos,wrong:wrong.map(q=>q.id),label})); }catch(e){} }
+function clearSession(){ try{ localStorage.removeItem("rekishi_session"); }catch(e){} }
+function loadSession(){ try{ const x=JSON.parse(localStorage.getItem("rekishi_session")||"null"); if(x&&Array.isArray(x.ids)&&x.pos<x.ids.length) return x; }catch(e){} return null; }
+const $=id=>document.getElementById(id);
+let deck=[],pos=0,wrong=[],label="";
+
+function renderHome(){
+  const list=$("list"); list.innerHTML="";
+  Object.keys(SHEETS).forEach(k=>{
+    const qs=Q.filter(q=>q.s==k), ok=qs.filter(q=>rec[q.id]==="o").length;
+    const b=document.createElement("button");
+    b.className="sheet"+(ok===qs.length?" clear":"");
+    b.innerHTML=`<span class="no">${k}</span><span class="tt">${SHEETS[k]}<small>${qs.length}問</small></span><span class="done">${ok===qs.length?"クリア！":"○ "+ok+"/"+qs.length}</span>`;
+    b.onclick=()=>start(qs,`プリント${k}`);
+    list.appendChild(b);
+  });
+  const ses=loadSession(), rb=$("resumeBtn");
+  if(ses){ rb.innerHTML=`▶ 続きから<small>${ses.label}　${ses.pos+1}問目から（のこり${ses.ids.length-ses.pos}問）</small>`; rb.classList.remove("hidden"); }
+  else rb.classList.add("hidden");
+  const ng=Q.filter(q=>rec[q.id]==="x");
+  $("ngBtn").disabled=ng.length===0;
+  $("ngBtn").textContent=ng.length?`×の問題だけ（${ng.length}）`:"×の問題だけ";
+  show("home");
+}
+function show(id){ ["home","quiz","result"].forEach(s=>$(s).classList.toggle("hidden",s!==id)); window.scrollTo(0,0); }
+function start(qs,lbl){ deck=qs.slice(); pos=0; wrong=[]; label=lbl; saveSession(); show("quiz"); renderQ(); }
+function resume(){ const x=loadSession(); if(!x) return renderHome();
+  const byId=id=>Q[id]; deck=x.ids.map(byId).filter(Boolean); pos=x.pos; wrong=(x.wrong||[]).map(byId).filter(Boolean); label=x.label;
+  show("quiz"); renderQ(); }
+function fmt(t){ return t.replace(B,'<span class="blank">？</span>'); }
+function renderQ(){
+  const q=deck[pos];
+  $("tag").textContent=`${q.s}. ${SHEETS[q.s]}`;
+  $("qText").innerHTML=fmt(q.q);
+  $("aText").textContent=q.a;
+  $("ans").classList.remove("open");
+  $("cover").setAttribute("aria-hidden","false");
+  $("okBtn").disabled=true; $("ngJudge").disabled=true;
+  $("count").textContent=`${pos+1} / ${deck.length}`;
+  $("barFill").style.width=(pos/deck.length*100)+"%";
+  stopSpeak();
+}
+function reveal(){ $("ans").classList.add("open"); $("cover").setAttribute("aria-hidden","true"); $("okBtn").disabled=false; $("ngJudge").disabled=false; }
+function judge(ok){
+  const q=deck[pos]; rec[q.id]=ok?"o":"x"; save();
+  if(!ok) wrong.push(q);
+  pos++;
+  if(pos<deck.length){ saveSession(); renderQ(); } else { clearSession(); finish(); }
+}
+function finish(){
+  $("barFill").style.width="100%"; stopSpeak();
+  const n=deck.length, ok=n-wrong.length;
+  $("resTitle").textContent=label+" おわり！";
+  $("score").innerHTML=`${ok}<small> / ${n}</small>`;
+  $("resMsg").textContent= wrong.length===0 ? "全問○！クリアです。" : `×が${wrong.length}問あります。もう一回やって、ぜんぶ○にしよう。`;
+  $("retryBtn").classList.toggle("hidden",wrong.length===0);
+  show("result");
+}
+// read aloud
+function stopSpeak(){ try{ speechSynthesis.cancel(); }catch(e){} }
+function speak(){
+  try{
+    stopSpeak();
+    const q=deck[pos];
+    let t=q.q.replace(B,"なに");
+    if($("ans").classList.contains("open")) t+="。こたえ、"+q.a;
+    const u=new SpeechSynthesisUtterance(t); u.lang="ja-JP"; u.rate=0.9;
+    speechSynthesis.speak(u);
+  }catch(e){ $("speakBtn").textContent="読み上げが使えません"; }
+}
+$("cover").onclick=reveal;
+$("okBtn").onclick=()=>judge(true);
+$("ngJudge").onclick=()=>judge(false);
+$("speakBtn").onclick=speak;
+$("backBtn").onclick=renderHome;
+$("homeBtn").onclick=renderHome;
+$("retryBtn").onclick=()=>start(wrong,label+"（×だけ）");
+$("resumeBtn").onclick=resume;
+$("allBtn").onclick=()=>start(Q,"ぜんぶ");
+$("ngBtn").onclick=()=>start(Q.filter(q=>rec[q.id]==="x"),"×の問題");
+if(!("speechSynthesis" in window)) $("speakBtn").classList.add("hidden");
+renderHome();
+</script>
+</body>
+</html>
