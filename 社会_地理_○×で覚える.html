@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>社会(地理) ○×で覚える</title>
+<style>
+  :root{
+    --main:#13ABA3;
+    --accent:#F4845F;
+    --ans:#FF8080;
+    --bg:#FAFAF8;
+    --card:#FFFFFF;
+    --text:#2A2A2A;
+    --sub:#6B6B6B;
+    --border:#E3E3E0;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1B1D1D; --card:#262929; --text:#EDEDEC; --sub:#A5A5A2; --border:#3A3D3D;
+    }
+  }
+  :root[data-theme="dark"]{ --bg:#1B1D1D; --card:#262929; --text:#EDEDEC; --sub:#A5A5A2; --border:#3A3D3D; }
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  *{box-sizing:border-box;}
+  body{margin:0; font-family:"游ゴシック","Yu Gothic","Hiragino Sans",sans-serif; background:var(--bg); color:var(--text);}
+  header{
+    position:sticky; top:0; z-index:10; background:var(--card);
+    padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px; border-bottom:1px solid var(--border);
+  }
+  header h1{font-size:16px; margin:0 0 2px;}
+  header .sub{font-size:11px; color:var(--sub);}
+  .progress-wrap{margin-top:8px; height:8px; border-radius:4px; background:var(--border); overflow:hidden;}
+  .progress-bar{height:100%; background:var(--main); width:0%; transition:width .3s;}
+  .progress-label{font-size:11px; color:var(--sub); margin-top:4px;}
+  main{padding:12px 12px 60px; max-width:640px; margin:0 auto;}
+  .section{margin-bottom:14px; border-radius:10px; background:var(--card); border:1px solid var(--border); overflow:hidden;}
+  .section-head{display:flex; justify-content:space-between; align-items:center; padding:12px 14px; cursor:pointer; user-select:none;}
+  .section-head .title{font-weight:bold; font-size:15px; color:var(--main);}
+  .section-head .count{font-size:12px; color:var(--sub);}
+  .section-body{padding:0 12px 12px; display:none;}
+  .section.open .section-body{display:block;}
+  .chev{transition:transform .2s; color:var(--sub);}
+  .section.open .chev{transform:rotate(90deg);}
+  .qcard{border-left:4px solid var(--main); background:var(--bg); border-radius:6px; padding:10px 10px 10px 12px; margin:10px 0;}
+  .qcard.correct{border-left-color:var(--main);}
+  .qcard.wrong{border-left-color:var(--accent);}
+  .qhead{display:flex; align-items:flex-start; gap:6px;}
+  .qnum{font-weight:bold; color:var(--main); font-size:13px; white-space:nowrap;}
+  .qtext{font-size:14.5px; line-height:1.55; flex:1;}
+  .speak-btn{border:none; background:none; font-size:18px; cursor:pointer; padding:2px 4px; line-height:1; color:var(--sub);}
+  .oxrow{display:flex; gap:10px; margin-top:10px;}
+  .oxbtn{
+    flex:1; padding:10px 0; font-size:20px; font-weight:bold; border-radius:8px; cursor:pointer;
+    border:2px solid var(--border); background:var(--card); color:var(--text);
+  }
+  .oxbtn.o.picked{background:var(--main); border-color:var(--main); color:#fff;}
+  .oxbtn.x.picked{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .result{
+    margin-top:8px; padding:8px 10px; border-radius:6px; font-size:13.5px; line-height:1.5;
+    display:none; font-weight:bold;
+  }
+  .result.show{display:block;}
+  .result.ok{background:rgba(19,171,163,0.12); color:var(--main);}
+  .result.ng{background:rgba(255,128,128,0.14); color:var(--ans);}
+  .explain{font-weight:normal; color:var(--text); margin-top:4px; display:block;}
+  .footer-note{font-size:11px; color:var(--sub); text-align:center; margin-top:20px;}
+  .reset-link{font-size:11px; color:var(--sub); text-decoration:underline; background:none; border:none; cursor:pointer; margin-top:6px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>社会（地理）○×で覚えよう</h1>
+  <div class="sub">プリント12〜16の内容。文を読んで○か×をタップ →答え合わせ。書くのはこのあと！</div>
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="progress-label" id="progressLabel">0 / 0 問 回答済み</div>
+</header>
+<main id="main"></main>
+
+<script>
+const DATA = [
+{ id:"p12", title:"プリント12　人々の生活に根付く宗教", items:[
+  {q:"仏教を開いたのはシャカである。", ans:"o"},
+  {q:"キリスト教の経典はコーランである。", ans:"x", ex:"正しくは「旧約聖書・新約聖書」。コーランはイスラム教の経典。"},
+  {q:"イスラム教を開いたのはムハンマドである。", ans:"o"},
+  {q:"仏教は主に西アジアやアフリカに分布している。", ans:"x", ex:"正しくは「東南アジアから東アジア」。西アジア・アフリカはイスラム教が多い。"},
+  {q:"キリスト教徒は日曜日に教会へ行き、礼拝に参加する。", ans:"o"},
+  {q:"イスラム教の聖地メッカはインドにある。", ans:"x", ex:"正しくは「サウジアラビア」。"},
+  {q:"カトリック・プロテスタント・正教会はイスラム教の宗派である。", ans:"x", ex:"正しくは「キリスト教」の宗派。"},
+  {q:"大乗仏教と上座部仏教は仏教の宗派である。", ans:"o"},
+  {q:"ヒンドゥー教はインドを中心に南アジアに分布している。", ans:"o"},
+  {q:"仏教が主に信仰されている地域はヨーロッパ州である。", ans:"x", ex:"正しくは「アジア州」。ヨーロッパ州はキリスト教が多い。"},
+  {q:"キリスト教が主に信仰されている地域はヨーロッパ州・南北アメリカ州・オセアニア州である。", ans:"o"},
+  {q:"イスラム教徒は豚肉やアルコールを口にしない。", ans:"o"},
+  {q:"日本では、クリスマスや西暦などキリスト教に関わる文化が取り入れられている。", ans:"o"},
+  {q:"ハラールフードはキリスト教に関わる食べ物である。", ans:"x", ex:"正しくは「イスラム教」に関わる。"},
+  {q:"仏教の経典は「経（きょう）」と呼ばれる。", ans:"o"},
+  {q:"イスラム教は主に西アジアやアフリカなどに分布している。", ans:"o"},
+]},
+{ id:"p13", title:"プリント13　アジア州の自然環境と農業・文化・人口", items:[
+  {q:"ヒマラヤ山脈には世界最高峰がある。", ans:"o"},
+  {q:"カスピ海は世界最大の湖である。", ans:"o"},
+  {q:"インドシナ半島は西アジアにある。", ans:"x", ex:"正しくは「東南アジア」にある。"},
+  {q:"長江は日本を流れる川である。", ans:"x", ex:"正しくは「中国」を流れる川。"},
+  {q:"デカン高原はインド半島にある。", ans:"o"},
+  {q:"モンゴル高原は東アジア内陸部にある。", ans:"o"},
+  {q:"インダス川は南アジア（パキスタン）を流れる。", ans:"o"},
+  {q:"アラビア半島は東アジアにある。", ans:"x", ex:"正しくは「西アジア」にある。"},
+  {q:"夏と冬で風向きが変わる風を季節風（モンスーン）という。", ans:"o"},
+  {q:"雨季は、冬に内陸から乾いた風が吹く時期のことである。", ans:"x", ex:"正しくは「夏」に、海から湿った風が吹く時期。"},
+  {q:"稲作は降水量が多い東・東南・南アジアで盛んである。", ans:"o"},
+  {q:"遊牧はインド西部・中国北部で盛んである。", ans:"x", ex:"正しくは「モンゴル高原・アラビア半島」で盛ん。インド西部・中国北部は畑作。"},
+  {q:"タイでは仏教徒が多い。", ans:"o"},
+  {q:"インドネシアではヒンドゥー教徒が多い。", ans:"x", ex:"正しくは「イスラム教徒」が多い。ヒンドゥー教徒はインドに多い。"},
+  {q:"フィリピンはキリスト教徒が多い国である。", ans:"o"},
+  {q:"アジア州の東部〜南部に人口が集中しているのは、季節風の影響で降水量が多く、多くの人を養うことができたからである。", ans:"o"},
+]},
+{ id:"p14", title:"プリント14　東アジア①中国の人口と社会の変化", items:[
+  {q:"中国の人口は約14億人である。", ans:"o"},
+  {q:"一人っ子政策は人口を増やすための政策である。", ans:"x", ex:"正しくは、急激な人口増加を「抑える」ための政策。"},
+  {q:"少子高齢化が進んだため、一人っ子政策は見直されている。", ans:"o"},
+  {q:"経済特区はシェンチェンなど沿海部に設置された。", ans:"o"},
+  {q:"中国は安価な労働力を生かし「世界の工場」と呼ばれるようになった。", ans:"o"},
+  {q:"中国では都市と農村の間で経済格差は見られない。", ans:"x", ex:"正しくは、都市と農村・沿海部と内陸部の間で経済格差が見られる。"},
+  {q:"中国の環境問題は化石燃料の大量消費による大気汚染などである。", ans:"o"},
+  {q:"中国の製品は主に日本やアメリカ合衆国などに輸出されている。", ans:"o"},
+  {q:"チューハイ・スワトウ・アモイは代表的な経済特区である。", ans:"o"},
+  {q:"ハルビンやナンキンは大気汚染が激しい都市の例である。", ans:"o"},
+]},
+{ id:"p15", title:"プリント15　東アジア②日本の隣国〜韓国〜", items:[
+  {q:"韓国独自の文字はハングルである。", ans:"o"},
+  {q:"儒教は年長者を敬う教えで、日本と共通点がある。", ans:"o"},
+  {q:"1945年、朝鮮はアメリカから独立した。", ans:"x", ex:"正しくは「日本」から独立した。"},
+  {q:"南北の分断線は北緯38度線である。", ans:"o"},
+  {q:"朝鮮半島の北の正式名称は大韓民国である。", ans:"x", ex:"正しくは「朝鮮民主主義人民共和国」。大韓民国は南（韓国）の正式名称。"},
+  {q:"1950年に朝鮮戦争が起こった。", ans:"o"},
+  {q:"1953年に休戦協定が結ばれた。", ans:"o"},
+  {q:"1960年代、韓国は重工業（造船・製鉄など）に力を入れた。", ans:"o"},
+  {q:"1980年の韓国の主な輸出品は半導体や自動車だった。", ans:"x", ex:"正しくは「衣類・機械類」。半導体などのハイテク製品が中心になったのは近年（2020年ごろ）。"},
+  {q:"2020年の韓国の主な輸出先は中国・アメリカ・ベトナムである。", ans:"o"},
+  {q:"現在の韓国はコンテンツ産業（K-POPやドラマなど）に力を入れている。", ans:"o"},
+  {q:"韓国と台湾は、ハイテク産業を育成し世界へ輸出することで経済成長した点が共通している。", ans:"o"},
+  {q:"韓国の首都はソウルである。", ans:"o"},
+  {q:"一極集中とは、人口が地方に分散することである。", ans:"x", ex:"正しくは、人口が「都市に集中」すること。"},
+  {q:"ソウルへの一極集中により、住宅価格の高騰などの問題が起きている。", ans:"o"},
+  {q:"韓国の総人口の約半分がソウルとその周辺に集中している。", ans:"o"},
+]},
+{ id:"p16", title:"プリント16　経済発展を目指す東南アジア", items:[
+  {q:"東南アジアで商業に活躍する中国系住民を華人という。", ans:"o"},
+  {q:"二期作とは、同じ土地で1年に2回米を作ることである。", ans:"o"},
+  {q:"プランテーションとは、欧米企業などが開いた大規模農園のことである。", ans:"o"},
+  {q:"マレーシアやインドネシアでは天然ゴムなどがプランテーションで栽培されている。", ans:"o"},
+  {q:"工業団地は、外国企業を招くために建設された。", ans:"o"},
+  {q:"ASEANの正式名称は東南アジア諸国連合である。", ans:"o"},
+  {q:"2026年現在、ASEANの加盟国は10カ国である。", ans:"x", ex:"正しくは「11カ国」。2025年10月に東ティモールが加盟した。"},
+  {q:"スラムとは、安定した職に就けず住宅環境が不十分な人々が暮らす場所のことである。", ans:"o"},
+  {q:"自動車やバイクの急増により、渋滞や大気汚染が起きている。", ans:"o"},
+  {q:"東南アジアの輸出品は、1975年から2022年で工業製品中心から一次産品中心に変化した。", ans:"x", ex:"正しくは逆。「一次産品中心」から「機械類などの工業製品中心」に変化した。"},
+  {q:"シンガポールでは、外国企業を誘致する工業団地の建設から工業化が始まった。", ans:"o"},
+]},
+];
+
+const STORE_KEY = "shakai_chiri_ox_progress_v1";
+function loadStore(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }catch(e){ return {}; } }
+function saveStore(s){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(s)); }catch(e){} }
+let store = loadStore();
+
+function speak(text){
+  try{
+    if(!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP'; u.rate = 0.95;
+    window.speechSynthesis.speak(u);
+  }catch(e){}
+}
+
+function totalCount(){ return DATA.reduce((s,sec)=>s+sec.items.length,0); }
+function doneCount(){
+  let c=0;
+  DATA.forEach(sec=>sec.items.forEach((it,i)=>{ if(store[sec.id+"_"+i] && store[sec.id+"_"+i].picked) c++; }));
+  return c;
+}
+function updateProgress(){
+  const total=totalCount(), done=doneCount();
+  document.getElementById('progressBar').style.width = (total? (done/total*100):0)+"%";
+  document.getElementById('progressLabel').textContent = done+" / "+total+" 問 回答済み";
+}
+
+function render(){
+  const main = document.getElementById('main');
+  main.innerHTML = "";
+  DATA.forEach((sec, secIdx)=>{
+    const secEl = document.createElement('div');
+    secEl.className = 'section' + (secIdx===0 ? ' open' : '');
+    const doneInSec = sec.items.filter((it,i)=> store[sec.id+"_"+i] && store[sec.id+"_"+i].picked).length;
+    secEl.innerHTML = `
+      <div class="section-head">
+        <div class="title">${sec.title}</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="count">${doneInSec}/${sec.items.length}</div>
+          <div class="chev">▶</div>
+        </div>
+      </div>
+      <div class="section-body"></div>
+    `;
+    secEl.querySelector('.section-head').addEventListener('click', ()=> secEl.classList.toggle('open'));
+    const body = secEl.querySelector('.section-body');
+    sec.items.forEach((it, i)=>{
+      const key = sec.id+"_"+i;
+      const saved = store[key] || {picked:null};
+      const card = document.createElement('div');
+      card.className = 'qcard';
+      card.innerHTML = `
+        <div class="qhead">
+          <div class="qnum">問${i+1}</div>
+          <div class="qtext">${it.q}</div>
+          <button class="speak-btn" title="読み上げる">🔊</button>
+        </div>
+        <div class="oxrow">
+          <button class="oxbtn o">○</button>
+          <button class="oxbtn x">×</button>
+        </div>
+        <div class="result"></div>
+      `;
+      const oBtn = card.querySelector('.oxbtn.o');
+      const xBtn = card.querySelector('.oxbtn.x');
+      const resultEl = card.querySelector('.result');
+
+      function applyPicked(picked){
+        oBtn.classList.toggle('picked', picked==='o');
+        xBtn.classList.toggle('picked', picked==='x');
+        if(picked){
+          const correct = (picked === it.ans);
+          resultEl.classList.add('show');
+          resultEl.classList.toggle('ok', correct);
+          resultEl.classList.toggle('ng', !correct);
+          card.classList.toggle('correct', correct);
+          card.classList.toggle('wrong', !correct);
+          let html = correct ? "正解！" : "おしい、正しくは「" + (it.ans==='o' ? '○' : '×') + "」。";
+          if(it.ex){ html += `<span class="explain">${it.ex}</span>`; }
+          resultEl.innerHTML = html;
+        } else {
+          resultEl.classList.remove('show');
+          card.classList.remove('correct','wrong');
+        }
+      }
+      applyPicked(saved.picked);
+
+      function pick(val){
+        const s = store[key] || {};
+        s.picked = (s.picked === val) ? null : val;
+        store[key] = s;
+        saveStore(store);
+        applyPicked(s.picked);
+        renderSectionCount(secEl, sec);
+        updateProgress();
+      }
+      oBtn.addEventListener('click', ()=>pick('o'));
+      xBtn.addEventListener('click', ()=>pick('x'));
+      card.querySelector('.speak-btn').addEventListener('click', (e)=>{ e.stopPropagation(); speak(it.q); });
+      body.appendChild(card);
+    });
+    main.appendChild(secEl);
+  });
+  const footer = document.createElement('div');
+  footer.className = 'footer-note';
+  footer.innerHTML = `こーなる　社会（地理）○×で覚える　回答はこの端末に保存されます。<br><button class="reset-link" id="resetBtn">記録をリセットする</button>`;
+  main.appendChild(footer);
+  document.getElementById('resetBtn').addEventListener('click', ()=>{
+    if(confirm('すべての記録を消しますか？')){ store = {}; saveStore(store); render(); updateProgress(); }
+  });
+  updateProgress();
+}
+function renderSectionCount(secEl, sec){
+  const doneInSec = sec.items.filter((it,i)=> store[sec.id+"_"+i] && store[sec.id+"_"+i].picked).length;
+  secEl.querySelector('.count').textContent = doneInSec + "/" + sec.items.length;
+}
+
+render();
+</script>
+</body>
+</html>
