@@ -14,8 +14,8 @@
 const CONFIG = {
   // スプレッドシートを「ウェブに公開」したCSVのURL（問題タブ・考査タブ）
   // 空のままだと、下のデモ問題で動く
-  problemsCsvUrl: '',
-  examsCsvUrl: '',
+  problemsCsvUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTcnAWoSrjekkE406gspjTSivQhiAsfEyXS0pTBRR7K7T6Z6KrS045PQQgxjUr1NLp9Q1EJwY9ixAU_/pub?single=true&output=csv&gid=1270913479',
+  examsCsvUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTcnAWoSrjekkE406gspjTSivQhiAsfEyXS0pTBRR7K7T6Z6KrS045PQQgxjUr1NLp9Q1EJwY9ixAU_/pub?single=true&output=csv&gid=940579361',
 
   battleSize: 10,          // ②バトル1戦の問題数
   storageKey: 'kohnaru-typing-v1',
